@@ -89,7 +89,7 @@ include ("/laragon/www/conexaolocal/api/logic.php");
     <section class="eventos" id="eventos">
         <form action="" method="post">
                 <h3>Cadastre seu evento</h3>
-                    <?php foreach ($eventos as $evento): ?>
+                    
                     <input type="text" name="" class="box" placeholder="Nome do evento" id="">
                         <select class="box" name="id_org" required>
                             <option class="box" value="<?= $org['id_org'] ?>">Organizador</option>
@@ -97,7 +97,7 @@ include ("/laragon/www/conexaolocal/api/logic.php");
                             <option value="<?= $evento['id_org'] ?>"><?= $evento['nome_org'] ?></option>
                             <?php endforeach; ?>
                         </select>
-                    <?php endforeach; ?> 
+                    
                     <input type="submit" value="Cadastrar" class="btn" name="adicionar_evento">
             </form>
     </section>
