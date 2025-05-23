@@ -14,17 +14,18 @@ include ("/laragon/www/conexaolocal/api/logic.php");
     <link rel="stylesheet" href="./ressources/css/header.css">
     <link rel="stylesheet" href="./ressources/css/cadastro.css">
     <link rel="stylesheet" href="./ressources/css/home.css">
+    <link rel="stylesheet" href="./ressources/css/evento_org.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="header" id="header">
         <a href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="./cadastro.php">Cadastro</a>
+            <a href="index.php">Home</a>
+            <a href="cadastro.php">Cadastro</a>
             <a href="#eventos">Eventos</a>
             <a href="#organizadores">Organizadores</a>
-            <a href="#reviews">Comentários</a>
+            
             
             
         </nav>
@@ -51,6 +52,54 @@ include ("/laragon/www/conexaolocal/api/logic.php");
     </header>
     <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
+        <div class="imagens">
+            <figure>
+                <img src="./ressources/img/image01.png" alt="">
+            </figure>
+            <figure>
+                <img src="./ressources/img/image02.png" alt="">
+            </figure>
+            <figure>
+                <img src="./ressources/img/image03.png" alt="">
+            </figure>
+            <figure>
+                <img src="./ressources/img/image04.png" alt="">
+            </figure>
+            <figure>
+                <img src="./ressources/img/image05.png" alt="">
+            </figure>
+            <figure>
+                <img src="./ressources/img/image06.png" alt="">
+            </figure>
+        </div>
+    </section>
+    <section class="organizadores" id="organizadores">
+        <form action="" method="post">
+                <h3>Cadastre organizador</h3>                
+                    <input type="text" name="" class="box" placeholder="Nome do organizador" id="">
+                        <select class="box" name="id_usuario" required>
+                            <option class="box" value="<?= $org['id_usuario'] ?>">Usuário</option>
+                            <?php foreach ($orgs as $org): ?>
+                            <option value="<?= $org['id_usuario'] ?>"><?= $org['nome'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    <input type="submit"  value="Cadastrar" class="btn">
+            </form>
+    </section>
+    <section class="eventos" id="eventos">
+        <form action="" method="post">
+                <h3>Cadastre seu evento</h3>
+                    <?php foreach ($eventos as $evento): ?>
+                    <input type="text" name="" class="box" placeholder="Nome do evento" id="">
+                        <select class="box" name="id_org" required>
+                            <option class="box" value="<?= $org['id_org'] ?>">Organizador</option>
+                            <?php foreach ($evento as $evento): ?>
+                            <option value="<?= $evento['id_org'] ?>"><?= $evento['nome_org'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    <?php endforeach; ?> 
+                    <input type="submit" value="Cadastrar" class="btn" name="adicionar_evento">
+            </form>
     </section>
 
 

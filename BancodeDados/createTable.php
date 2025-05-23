@@ -28,8 +28,8 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS evento (
     id_evt INT PRIMARY KEY AUTO_INCREMENT,
     nome_evt VARCHAR(250) NOT NULL,
     id_org INT NOT NULL,
-    id_interacao INT NOT NULL,
     FOREIGN KEY (id_org) REFERENCES organizador(id_org),
+    id_interacao INT NOT NULL,
     FOREIGN KEY (id_interacao) REFERENCES interacao(id_interacao)
 )");
 
