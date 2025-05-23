@@ -1,0 +1,42 @@
+.cadastro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cadastro form{
+    background: var(--branco);
+    border: var(--border);
+    width: 40rem;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    margin: 2rem;
+}
+.cadastro form h3{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--letra);
+    text-align: center;
+}
+.cadastro form span{
+    display: block;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+.cadastro form .box{
+    width: 100%;
+    margin: .7rem 0;
+    font-size: 1.6rem;
+    border: var(--border);
+    border-radius: .5rem;
+    padding: 1rem 1.2rem;
+    color: var(--letra);
+    text-transform: none;
+}
+
+.cadastro form .btn{
+    text-align: center;
+    width: 100%;
+    margin: 1.5rem 0;
+} 
+

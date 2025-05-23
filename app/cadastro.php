@@ -13,14 +13,13 @@ include ("/laragon/www/conexaolocal/api/logic.php");
     <link rel="stylesheet" href="./ressources/css/style.css">
     <link rel="stylesheet" href="./ressources/css/header.css">
     <link rel="stylesheet" href="./ressources/css/cadastro.css">
-    <link rel="stylesheet" href="./ressources/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <header class="header" id="header">
         <a href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
-            <a href="#home">Home</a>
+            <a href="./index.php">Home</a>
             <a href="./cadastro.php">Cadastro</a>
             <a href="#eventos">Eventos</a>
             <a href="#organizadores">Organizadores</a>
@@ -33,10 +32,10 @@ include ("/laragon/www/conexaolocal/api/logic.php");
             </div>
             <div class="login-form-container">
                     <div id="close-login-btn" class="fas fa-times"></div>
-                    <form action="">
+                    <form method="get">
                         <h3>Faça seu login</h3>
                         <span>Usuário</span>
-                        <input type="text" name="" class="box" placeholder="Seu username" id="">
+                        <input type="text" name="username" class="box" placeholder="Seu username" id="username">
                         <span>Senha</span>
                         <input type="password" name="" class="box" placeholder="Sua senha" id="">
                         <div class="checkbox">
@@ -49,8 +48,17 @@ include ("/laragon/www/conexaolocal/api/logic.php");
                     </form>
             </div>
     </header>
-    <section class="home" id="home">
-        <img src="./ressources/img/logo.png" alt="">
+    <section class="cadastro" id="cadastro">
+        <div class="cadastro">
+            <form action="" method="post">
+                <h3>Faça seu cadastro</h3>
+                    <input type="text" name="" class="box" placeholder="Seu nome" id="">
+                    <input type="text" name="" class="box" placeholder="Seu username" id="">
+                    <input type="email" name="" class="box" placeholder="Seu username" id="">              
+                    <input type="password" name="" class="box" placeholder="Sua senha" id="">
+                    <input type="submit" value="Cadastrar" class="btn">
+            </form>
+        </div>
     </section>
 
 

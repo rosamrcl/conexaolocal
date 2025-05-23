@@ -10,12 +10,12 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS usuario (
     senha VARCHAR(250) NOT NULL
 )");
 
-// Cria tabela interacao (não depende de nenhuma outra)
+// Cria tabela interacao 
 $pdo->exec("CREATE TABLE IF NOT EXISTS interacao (
     id_interacao INT PRIMARY KEY AUTO_INCREMENT
 )");
 
-// Cria tabela organizador SEM referência a evento ainda
+// Cria tabela organizador 
 $pdo->exec("CREATE TABLE IF NOT EXISTS organizador (
     id_org INT PRIMARY KEY AUTO_INCREMENT,
     nome_org VARCHAR(250) NOT NULL,
@@ -23,7 +23,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS organizador (
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
 )");
 
-// Cria tabela evento (agora com referencia correta)
+// Cria tabela evento 
 $pdo->exec("CREATE TABLE IF NOT EXISTS evento (
     id_evt INT PRIMARY KEY AUTO_INCREMENT,
     nome_evt VARCHAR(250) NOT NULL,

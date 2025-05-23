@@ -1,0 +1,128 @@
+.header {
+    background: var(--branco);
+    border: var(--border);
+    padding: 1.5rem 9%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .logo img{
+    width: 20%;
+}
+
+.header .icons div, 
+.header .icons a{
+    font-size: 2.5rem;
+    margin-left: 1.5rem;
+    color: var(--letra);
+    cursor: pointer;
+} 
+
+.header .icons div:hover, 
+.header .icons a:hover{
+    color: var(--rosa);
+}
+
+.header .navbar{
+    text-align: center;
+}
+.header  .navbar a{
+    color: var(--letra);
+    display: inline-block;
+    padding: 1.2rem;
+    font-size: 1.7rem;
+}
+.header  .navbar a:hover{
+    color: var(--rosa);
+}
+
+.header.active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.header .login-form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffffe6;
+    position: fixed;
+    top: 0;
+    right:-105%;
+    z-index: 10000;
+    height: 100%;
+    width: 100%;
+}
+.header .login-form-container.active{
+    right: 0;
+}
+.header .login-form-container form{
+    background: var(--branco);
+    border: var(--border);
+    width: 40rem;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    margin: 2rem;
+}
+.header .login-form-container form h3{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--letra);
+    text-align: center;
+}
+.header .login-form-container form span{
+    display: block;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+.header .login-form-container form .box{
+    width: 100%;
+    margin: .7rem 0;
+    font-size: 1.6rem;
+    border: var(--border);
+    border-radius: .5rem;
+    padding: 1rem 1.2rem;
+    color: var(--letra);
+    text-transform: none;
+}
+.login-form-container form .checkbox{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: 1rem 0;    
+}
+.login-form-container form .checkbox label{
+    font-size: 1.5rem;
+    color: var(--letra);
+    cursor: pointer;
+    text-transform: none;
+}
+
+.header .login-form-container form .btn{
+    text-align: center;
+    width: 100%;
+    margin: 1.5rem 0;
+} 
+
+.header .login-form-container form  p{
+    padding-top: .8rem;
+    color: var(--letra);
+    font-size: 1.5rem;
+}
+.header .login-form-container form p a{
+    color: var(--botao);
+    text-decoration: underline;
+}
+.header .login-form-container #close-login-btn{
+    position: absolute;
+    top: 1.5rem;
+    right: 2.5rem;
+    font-size: 5rem;
+    color: var(--letra);
+    cursor: pointer;
+}
