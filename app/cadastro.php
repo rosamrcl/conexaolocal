@@ -56,7 +56,7 @@ include ("/laragon/www/conexaolocal/api/logic.php");
                     <input type="text" name="" class="box" placeholder="Seu username" id="">
                     <input type="email" name="" class="box" placeholder="Seu email" id="">              
                     <input type="password" name="" class="box" placeholder="Sua senha" id="">
-                    <input type="submit" value="Cadastrar" class="btn">
+                    <input type="submit" name="adicionar" value="Cadastrar" class="btn">
             </form>
         </div>
     </section>

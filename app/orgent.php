@@ -76,20 +76,34 @@ include("/laragon/www/conexaolocal/api/logic.php");
             </figure>
         </div>
     </section>
-
-    <section class="eventos" id="eventos">
+    <section class="organizadores" id="organizadores">
         <form action="" method="post">
-            
-            <input type="text" name="" class="box" placeholder="Nome do evento" id="">
-            <input type="text" name="" class="box" placeholder="Organizador" id="">
-            <input type="text" name="" class="box" placeholder="Descrição" id="">
-            <a href=""><i class="fa-regular fa-heart"></i></a>
-            <a href=""><i class="fa-solid fa-heart"></i></a>
+            <h3>Cadastre organizador</h3>
+            <input type="text" name="" class="box" placeholder="Username" id="">
+            <input type="text" name="" class="box" placeholder="Nome do organizador" id="">
+            <input type="submit" value="Cadastrar" class="btn">
+        </form>
+        <form action="" method="post">
+            <h3>Cadastre seu evento</h3>
 
-            <textarea class="box" name="" id="" placeholder="Deixe aqui seu comentário"></textarea>
-            <input type="submit" value="Enviar" class="btn" name="adicionar_cmt">
-        </form>   
+            
+            <input type="text" name="" class="box" placeholder="Organizador" id="">
+            <input type="text" name="" class="box" placeholder="Nome do evento" id="">
+            <input type="text" name="" class="box" placeholder="Descrição" id="">
+            <input type="datetime" name="" class="box" placeholder="Inicio do evento" id="">
+            <input type="datetime" name="" class="box" placeholder="Fim do evento" id="">
+            <input type="datetime" name="" id="">
+            <input type="text" name="" class="box" placeholder="Local do evento" id="">
+            <input type="text" name="" class="box" placeholder="Endereço do evento" id="">
+            <input type="text" name="" class="box" placeholder="Cidade do evento" id="">
+            <input type="number" name="" class="box" placeholder="Preço do evento" id="">
+            <input type="text" name="" class="box" placeholder="Status do evento" id="">
+            
+
+            <input type="submit" value="Cadastrar" class="btn" name="adicionar_evento">
+        </form>
     </section>
+
 
 
     <script src="./ressources/js/script.js"></script>
