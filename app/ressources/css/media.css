@@ -1,0 +1,40 @@
+@media(max-width:991px){
+    html{
+        font-size: 55%;
+    }
+    .header {
+        padding: 2rem;
+    }
+    section{
+        padding: 3rem 2rem;
+    }
+}
+@media(max-width:768px){
+    html{
+        scroll-padding-top:0;
+    }
+    body{
+        padding-bottom: 6rem;
+    }
+    .header {
+        display: none;
+    }
+    
+    .header{
+        box-shadow: var(--box-shadow);
+        position: relative;
+    }
+
+    .home .row .content {
+        text-align: center;
+    }
+    .home .row .content h3{
+        font-size: 3.5rem;
+    }
+
+}
+@media(max-width:450px){
+    html{
+        font-size: 50%;
+    }
+}
