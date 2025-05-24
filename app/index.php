@@ -104,20 +104,17 @@ include("/laragon/www/conexaolocal/api/logic.php");
         </form>
     </section>
     <section class="eventos" id="eventos">
-        <div class="box-container">
-            <div class="box">
-                <h3>Evento</h3>
-                <p class="text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis est similique a, laborum quia dicta sunt eveniet sint modi laboriosam quibusdam rem voluptatem impedit adipisci quasi, error corrupti autem totam?
-                </p>                
-                <p class="text">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nobis porro, odit labore eligendi vel corporis corrupti quisquam itaque minus optio earum adipisci tempora eos nam fugiat pariatur et dolorem molestiae?
-                </p>
-                <div class="icons">
-                    <a href="#" class="fas fa-heart"></a>
-                </div>
-            </div>
-        </div>        
+        <form action="" method="post">
+            
+            <input type="text" name="" class="box" placeholder="Nome do evento" id="">
+            <input type="text" name="" class="box" placeholder="Organizador" id="">
+            <input type="text" name="" class="box" placeholder="Descrição" id="">
+            <a href=""><i class="fa-regular fa-heart"></i></a>
+            <a href=""><i class="fa-solid fa-heart"></i></a>
+
+            <textarea class="box" name="" id="" placeholder="Deixe aqui seu comentário"></textarea>
+            <input type="submit" value="Enviar" class="btn" name="adicionar_cmt">
+        </form>   
     </section>
 
 

@@ -76,6 +76,6 @@ section{
     font-size: 3rem;
     padding: .5rem 2rem;
     color: var(--letra);
-    background: var(--bg2);
+    background: var(--azul);
     border: var(--border);
 }

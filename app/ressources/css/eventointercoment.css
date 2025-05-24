@@ -1,9 +1,61 @@
-.eventos .box-container{
+/* .eventos .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
     gap: 2rem;
+} */
+
+
+.eventos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.eventos .box-container .box{
+
+.eventos form{
+    background: var(--branco);
+    border: var(--border);
+    width: 40rem;
+    padding: 2rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    margin: 2rem;
+}
+.eventos form h3{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: var(--letra);
+    text-align: center;
+}
+.eventos form span{
+    display: block;
+    font-size: 1.5rem;
+    padding-top: 1rem;
+}
+.eventos form a{
+    color: var(--rosa);
+    font-size: 2rem;
+}
+.eventos form .box{
+    width: 100%;
+    margin: .7rem 0;
+    font-size: 1.6rem;
+    border: var(--border);
+    border-radius: .5rem;
+    padding: 1rem 1.2rem;
+    color: var(--letra);
+    text-transform: none;
+}
+
+.eventos form .btn{
+    text-align: center;
+    width: 100%;
+    margin: 1.5rem 0;
+} 
+
+
+
+
+/* .eventos .box-container .box{
     border: var(--border);
     box-shadow: var(--box-shadow);
     border-radius: .5rem;
@@ -23,14 +75,9 @@
 .eventos .box-container .box .icons a{
     color: var(--rosa);
     font-size: 1.5rem;
-}
-.eventos .box-container .box .text{
-    color: var(--letra);
-    line-height: 1.8;
-    font-size: 1.6rem;
-    padding-top: 4rem;
-}
-.eventos .box-container .box::before{
+} */
+
+/* .eventos .box::before{
     content: '';
     position: absolute;
     top: -4rem;
@@ -40,6 +87,6 @@
     border-bottom-left-radius: 50%;
     border-bottom-right-radius: 50%;
     height: 25rem;
-    width: 120%;
+    width: 40%;
     z-index: -1;
-}
+} */
