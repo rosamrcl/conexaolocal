@@ -1,0 +1,45 @@
+.eventos .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+    gap: 2rem;
+}
+.eventos .box-container .box{
+    border: var(--border);
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    padding: 2.5rem;
+    background: var(--branco);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.eventos .box-container .box h3{
+    color: var(--letra);
+    font-size: 2.2rem;
+    padding: .5rem 0;
+}
+.eventos .box-container .box .icons a{
+    color: var(--rosa);
+    font-size: 1.5rem;
+}
+.eventos .box-container .box .text{
+    color: var(--letra);
+    line-height: 1.8;
+    font-size: 1.6rem;
+    padding-top: 4rem;
+}
+.eventos .box-container .box::before{
+    content: '';
+    position: absolute;
+    top: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--verde);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    height: 25rem;
+    width: 120%;
+    z-index: -1;
+}
