@@ -20,7 +20,7 @@
     border-radius: .5rem;
     margin: 2rem;
 }
-.eventos form h3{
+/* .eventos form h3{
     font-size: 2.5rem;
     text-transform: uppercase;
     color: var(--letra);
@@ -30,7 +30,7 @@
     display: block;
     font-size: 1.5rem;
     padding-top: 1rem;
-}
+} */
 .eventos form a{
     color: var(--rosa);
     font-size: 2rem;
@@ -89,4 +89,4 @@
     height: 25rem;
     width: 40%;
     z-index: -1;
-} */
+}  */
