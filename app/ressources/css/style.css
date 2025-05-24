@@ -81,7 +81,7 @@ section{
 }
 
 #menu-bar{
-    color: var(--branco);
+    color: var(--letra);
     border:.1rem solid var(--branco);
     border-radius: .5rem;
     font-size: 3rem;

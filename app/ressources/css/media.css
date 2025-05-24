@@ -1,29 +1,14 @@
-@media(max-width:991px){
+@media (max-width:1200px){
     html{
         font-size: 55%;
     }
-    .header {
+}
+@media (max-width:991px){
+    .header{
         padding: 2rem;
     }
-    section{
-        padding: 3rem 2rem;
-    }
 }
-@media(max-width:768px){
-    html{
-        scroll-padding-top:0;
-    }
-    body{
-        padding-bottom: 6rem;
-    }
-    .header {
-        display: none;
-    }
-    
-    .header{
-        box-shadow: var(--box-shadow);
-        position: relative;
-    }
+@media (max-width:768px){
     .header #menu-bar{
         display: initial;
     }
@@ -47,9 +32,9 @@
         margin: 1.5rem 0;
         background: #222;
     }
-
 }
-@media(max-width:450px){
+
+@media (max-width:450px){
     html{
         font-size: 50%;
     }

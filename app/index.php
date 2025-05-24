@@ -30,31 +30,24 @@ include("/laragon/www/conexaolocal/api/logic.php");
             <a href="cadastro.php">Cadastro</a>
             <a href="#eventos">Eventos</a>
             <a href="orgent.php">Organizadores</a>
-
-
-
         </nav>
         <div class="icons">
             <div id="login-btn" class="fas fa-user"></div>
         </div>
-        <div class="login-form-container">
-            <div id="close-login-btn" class="fas fa-times"></div>
-            <form action="">
-                <h3>Faça seu login</h3>
-                <span>Usuário</span>
-                <input type="text" name="" class="box" placeholder="Seu username" id="">
-                <span>Senha</span>
-                <input type="password" name="" class="box" placeholder="Sua senha" id="">
-                <div class="checkbox">
-                    <input type="checkbox" name="" id="lembre-se">
-                    <label for="lembre-se">Lembre-se de mim</label>
-                </div>
-                <input type="submit" value="Enviar" class="btn">
-                <p>Esqueceu a senha? <a href="#">Click aqui</a></p>
-                <p>Não tem uma conta? <a href="./cadastro.php">Crie uma conta</a></p>
-            </form>
-        </div>
     </header>
+    <div class="login-form-container">
+        <i class="fas fa-times" id="form-close"></i>
+        <form action="">
+            <h3>Login</h3>
+            <input type="email" class="box" id="" placeholder="Digite seu e-mail">
+            <input type="password" class="box" id="" placeholder="Digite sua senha">
+            <input type="submit" class="btn" value="Enviar">
+            <input type="checkbox" name="" id="remenber">
+            <label for="remenber">Lembre-se de mim</label>
+            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
+            <p>Não tem uma conta? <a href="#">Cadastre agora</a></p>
+        </form>
+    </div>
     <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
