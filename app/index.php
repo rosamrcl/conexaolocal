@@ -23,6 +23,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
 
 <body>
     <header class="header" id="header">
+        <div id="menu-bar" class="fas fa-bars"></div>
         <a href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
             <a href="index.php">Home</a>
