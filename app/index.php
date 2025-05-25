@@ -22,18 +22,19 @@ include("/laragon/www/conexaolocal/api/logic.php");
 </head>
 
 <body>
-    <header class="header" id="header">
+        <header class="header">
         <div id="menu-bar" class="fas fa-bars"></div>
-        <a href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
+        <a target="_blank" href="https://www.youtube.com/watch?v=nPZp-YNPyC8" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
             <a href="index.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
             <a href="#eventos">Eventos</a>
-            <a href="orgent.php">Organizadores</a>
+            <a href="orgent.php">Organizadores</a>      
         </nav>
-        <div class="icons">
-            <div id="login-btn" class="fas fa-user"></div>
+        <div class="icons">            
+            <i class="fas fa-user" id="login-btn"></i>
         </div>
+        
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
@@ -48,6 +49,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
             <p>Não tem uma conta? <a href="#">Cadastre agora</a></p>
         </form>
     </div>
+
     <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">

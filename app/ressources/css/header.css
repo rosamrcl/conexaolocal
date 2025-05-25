@@ -19,20 +19,19 @@
 .header .navbar a:hover{
     color: var(--rosa);
 }
-.header .icons div, 
-.header .icons a{
-    font-size: 2.5rem;
-    margin-left: 1.5rem;
-    color: var(--letra);
-    cursor: pointer;
-} 
 
-.header .icons div:hover, 
-.header .icons a:hover{
-    color: var(--rosa);
-}
 .header .logo img{
     width: 20%;
+}
+
+.header .icons i{
+    font-size: 2.5rem;
+    color: var(--letra);
+    cursor: pointer;
+    margin-right: 2rem;
+}
+.header .icons i:hover{
+    color: var(--rosa);
 }
 
 
