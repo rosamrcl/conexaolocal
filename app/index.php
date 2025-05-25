@@ -22,9 +22,9 @@ include("/laragon/www/conexaolocal/api/logic.php");
 </head>
 
 <body>
-        <header class="header">
+    <header class="header">
         <div id="menu-bar" class="fas fa-bars"></div>
-        <a target="_blank" href="https://www.youtube.com/watch?v=nPZp-YNPyC8" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
+        <a target="_blank" href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
             <a href="index.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
