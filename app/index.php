@@ -1,6 +1,7 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
+include("/laragon/www/conexaolocal/api/auth.php");
 
 ?>
 
@@ -40,9 +41,9 @@ include("/laragon/www/conexaolocal/api/logic.php");
         <i class="fas fa-times" id="form-close"></i>
         <form action="">
             <h3>Login</h3>
-            <input type="email" class="box" id="" placeholder="Digite seu e-mail">
-            <input type="password" class="box" id="" placeholder="Digite sua senha">
-            <input type="submit" class="btn" value="Enviar">
+            <input type="text" class="box" name="username" placeholder="Digite seu username">
+            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
+            <input type="submit" name="login" class="btn" value="Enviar">
             <input type="checkbox" name="" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>

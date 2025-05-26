@@ -1,6 +1,7 @@
 <?php
 include ("/laragon/www/conexaolocal/api/config.php");
 include ("/laragon/www/conexaolocal/api/logic.php");
+include ("/laragon/www/conexaolocal/api/auth.php");
 
 ?>
 
@@ -38,9 +39,9 @@ include ("/laragon/www/conexaolocal/api/logic.php");
         <i class="fas fa-times" id="form-close"></i>
         <form action="">
             <h3>Login</h3>
-            <input type="email" class="box" id="" placeholder="Digite seu e-mail">
-            <input type="password" class="box" id="" placeholder="Digite sua senha">
-            <input type="submit" class="btn" value="Enviar">
+            <input type="text" class="box" name="username" placeholder="Digite seu username">
+            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
+            <input type="submit" class="btn" name="login" value="Enviar">
             <input type="checkbox" name="" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
@@ -74,10 +75,10 @@ include ("/laragon/www/conexaolocal/api/logic.php");
         <div class="cadastro">
             <form action="" method="post">
                 <h3>Faça seu cadastro</h3>
-                    <input type="text" name="" class="box" placeholder="Seu nome" id="">
-                    <input type="text" name="" class="box" placeholder="Seu username" id="">
-                    <input type="email" name="" class="box" placeholder="Seu email" id="">              
-                    <input type="password" name="" class="box" placeholder="Sua senha" id="">
+                    <input type="text" name="nome" class="box" placeholder="Seu nome" id="">
+                    <input type="text" name="username" class="box" placeholder="Seu username" id="">
+                    <input type="email" name="email" class="box" placeholder="Seu email" id="">              
+                    <input type="password" name="senha" class="box" placeholder="Sua senha" id="">
                     <input type="submit" name="adicionar" value="Cadastrar" class="btn">
             </form>
         </div>
