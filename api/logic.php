@@ -18,27 +18,27 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
 
 
 //login 
-require_once ('/laragon/www/conexaolocal/api/auth.php');
-requireGuest();
-if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST ['login'])){
-    // Processar login
-    $username = $_POST['username'];
-    $senha = $_POST['senha'];
+// require_once ('/laragon/www/conexaolocal/api/auth.php');
+// requireGuest();
+// if ($_SERVER['REQUEST_METHOD']=='POST' && isset($_POST ['login'])){
+//     // Processar login
+//     $username = $_POST['username'];
+//     $senha = $_POST['senha'];
 
 
-     // Verificar credenciais no banco
-    $stmt=$pdo->prepare("SELECT id_usuario, senha FROM usuario WHERE username = ?");
-    $stmt->execute([$username]);
-    $user = $stmt->fetch();
+//      // Verificar credenciais no banco
+//     $stmt=$pdo->prepare("SELECT id_usuario, senha FROM usuario WHERE username = ?");
+//     $stmt->execute([$username]);
+//     $user = $stmt->fetch();
 
-    if($user && password_verify($senha, $user ['senha'])){
-        $_SESSION['user_id'] = ['id_usuario'];
-        header('Location: index.php');
-        exit();
-    }else{
-        $error= "Verifique login e senha";
-    }
-}
+//     if($user && password_verify($senha, $user ['senha'])){
+//         $_SESSION['user_id'] = ['id_usuario'];
+//         header('Location: index.php');
+//         exit();
+//     }else{
+//         $error= "Verifique login e senha";
+//     }
+// }
 
 
 // if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar_organizador'])){

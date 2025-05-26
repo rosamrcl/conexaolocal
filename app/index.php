@@ -51,7 +51,7 @@ include("/laragon/www/conexaolocal/api/auth.php");
         </form>
     </div>
 
-    <section class="home" id="home">
+    <section class="home" id="home">        
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
             <figure>
