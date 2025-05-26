@@ -39,7 +39,8 @@ include("/laragon/www/conexaolocal/api/auth.php");
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
-        <form action="">
+        
+        <form action="" method="get">
             <h3>Login</h3>
             <input type="text" class="box" name="username" placeholder="Digite seu username">
             <input type="password" class="box" name="senha" placeholder="Digite sua senha">

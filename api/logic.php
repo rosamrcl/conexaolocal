@@ -15,10 +15,10 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
         exit();
     }
 }
-if ($_SERVER['REQUEST_METHOD'] ==='GET' && isset($_GET['adicionar'])){
+if ($_SERVER['REQUEST_METHOD'] ==='GET' && isset($_GET['login'])){
     if(!empty($_GET['username'])
     && !empty($_GET['senha'])){
-        $stmt = $pdo->prepare("INSERT INTO usuario (nome, username, email, senha) VALUES (?, ?, ?, ?)");
+        $stmt = $pdo->prepare("SELECT * FROM usuario (username,  senha) VALUES (?, ?)");
         $stmt->execute([$_GET['username'], 
         $_GET['senha']]);
         header("Location: index.php");
