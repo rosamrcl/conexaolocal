@@ -16,10 +16,12 @@
 
 
 -- Copiando estrutura do banco de dados para conexaolocal
+DROP DATABASE IF EXISTS `conexaolocal`;
 CREATE DATABASE IF NOT EXISTS `conexaolocal` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `conexaolocal`;
 
 -- Copiando estrutura para tabela conexaolocal.comentario
+DROP TABLE IF EXISTS `comentario`;
 CREATE TABLE IF NOT EXISTS `comentario` (
   `id_cmt` int NOT NULL AUTO_INCREMENT,
   `comentario` varchar(250) NOT NULL,
@@ -37,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `comentario` (
 -- Copiando dados para a tabela conexaolocal.comentario: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela conexaolocal.evento
+DROP TABLE IF EXISTS `evento`;
 CREATE TABLE IF NOT EXISTS `evento` (
   `id_evt` int NOT NULL AUTO_INCREMENT,
   `id_org` int NOT NULL,
@@ -58,6 +61,7 @@ CREATE TABLE IF NOT EXISTS `evento` (
 -- Copiando dados para a tabela conexaolocal.evento: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela conexaolocal.interacao
+DROP TABLE IF EXISTS `interacao`;
 CREATE TABLE IF NOT EXISTS `interacao` (
   `id_interacao` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -73,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `interacao` (
 -- Copiando dados para a tabela conexaolocal.interacao: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela conexaolocal.organizador
+DROP TABLE IF EXISTS `organizador`;
 CREATE TABLE IF NOT EXISTS `organizador` (
   `id_org` int NOT NULL AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
@@ -85,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `organizador` (
 -- Copiando dados para a tabela conexaolocal.organizador: ~0 rows (aproximadamente)
 
 -- Copiando estrutura para tabela conexaolocal.usuario
+DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
   `id_usuario` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(250) NOT NULL,
@@ -94,9 +100,11 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela conexaolocal.usuario: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela conexaolocal.usuario: ~1 rows (aproximadamente)
+INSERT INTO `usuario` (`id_usuario`, `nome`, `username`, `email`, `senha`) VALUES
+	(1, 'Márcio Lorenzo Carlos Araújo', 'marcio_lorenzo', 'marcio-araujo73@gasparalmeida.com', '203040');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
