@@ -46,7 +46,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
             <input type="checkbox" name="" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-            <p>Não tem uma conta? <a href="#">Cadastre agora</a></p>
+            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
         </form>
     </div>
 
