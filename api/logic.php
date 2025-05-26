@@ -41,16 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar'])){
 // }
 
 
-// if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar_organizador'])){
-//     if(!empty($_POST['nome_org'])
-//     && !empty ($_POST['id_usuario'])){
-//         $stmt = $pdo->prepare("INSERT INTO organizador (nome_org, id_usuario) VALUES (?, ?)");
-//         $stmt->execute([$_POST['nome_org'], 
-//         $_POST['id_usuario']]);
-//         header("Location: index.php");
-//         exit();
-//     }
-// }
+if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar_organizador'])){
+    if(!empty($_POST['nome_org'])
+    && !empty ($_POST['id_usuario'])){
+        $stmt = $pdo->prepare("INSERT INTO organizador (nome_org, id_usuario) VALUES (?, ?)");
+        $stmt->execute([$_POST['nome_org'], 
+        $_POST['id_usuario']]);
+        header("Location: index.php");
+        exit();
+    }
+}
 // if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['adicionar_evento'])){
 //     if(!empty($_POST['nome_evt'])
 //     && !empty ($_POST['id_org'])
