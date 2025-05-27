@@ -37,11 +37,12 @@ include ("/laragon/www/conexaolocal/api/auth.php");
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
+        
         <form action="" method="get">
             <h3>Login</h3>
             <input type="text" class="box" name="username" placeholder="Digite seu username">
             <input type="password" class="box" name="senha" placeholder="Digite sua senha">
-            <input type="submit" class="btn" name="login" value="Enviar">
+            <input type="submit" name="login" class="btn" value="Enviar">
             <input type="checkbox" name="" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>

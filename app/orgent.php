@@ -17,11 +17,12 @@ include("/laragon/www/conexaolocal/api/logic.php");
     <link rel="stylesheet" href="./ressources/css/home.css">
     <link rel="stylesheet" href="./ressources/css/evento_org.css">
     <link rel="stylesheet" href="./ressources/css/eventointercoment.css">
+    <link rel="stylesheet" href="./ressources/css/media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
-        <header class="header">
+    <header class="header">
         <div id="menu-bar" class="fas fa-bars"></div>
         <a target="_blank" href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
@@ -37,11 +38,12 @@ include("/laragon/www/conexaolocal/api/logic.php");
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
+        
         <form action="" method="get">
             <h3>Login</h3>
-            <input type="text" class="box" name="username" id=""  placeholder="Digite seu username">
-            <input type="password" class="box" name="senha" id="" placeholder="Digite sua senha">
-            <input type="submit" class="btn" name="login" value="Enviar">
+            <input type="text" class="box" name="username" placeholder="Digite seu username">
+            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
+            <input type="submit" name="login" class="btn" value="Enviar">
             <input type="checkbox" name="" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
