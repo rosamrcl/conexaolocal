@@ -1,9 +1,9 @@
 <?php
-include("/laragon/www/conexaolocal/api/config.php");
-include("/laragon/www/conexaolocal/api/logic.php");
-// include("/laragon/www/conexaolocal/api/login.php");
-// include("/laragon/www/conexaolocal/api/logout.php");
-// include("/laragon/www/conexaolocal/api/dashboard.php");
+session_start();
+if (empty($_SESSION)){
+    print"<script>location.href='index.php';</script>";
+    
+}
 
 ?>
 
@@ -41,18 +41,14 @@ include("/laragon/www/conexaolocal/api/logic.php");
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
+        <?php
+        print  "Olá" . $_SESSION["nome"];
+        print "<h1>Login realizado com sucesso</h1>";
+        print "<a href='logout.php' class='btn'>Sair</a>";
         
-        <form action="" method="get">
-            <h3>Login</h3>
-            <input type="text" class="box" name="username" placeholder="Digite seu username">
-            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
-            <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="" id="remenber">
-            <label for="remenber">Lembre-se de mim</label>
-            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
-        </form>
+        ?>
     </div>
+
 
     <section class="home" id="home">        
         <img src="./ressources/img/logo.png" alt="">
@@ -77,8 +73,6 @@ include("/laragon/www/conexaolocal/api/logic.php");
             </figure>
         </div>
     </section>
-
-
 
     <section class="eventos" id="eventos">
         <form action="" method="post">
