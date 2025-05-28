@@ -1,9 +1,7 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
-// include("/laragon/www/conexaolocal/api/login.php");
-// include("/laragon/www/conexaolocal/api/logout.php");
-// include("/laragon/www/conexaolocal/api/dashboard.php");
+
 
 ?>
 
@@ -18,6 +16,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
     <link rel="stylesheet" href="./ressources/css/header.css">
     <link rel="stylesheet" href="./ressources/css/cadastro.css">
     <link rel="stylesheet" href="./ressources/css/home.css">
+    <link rel="stylesheet" href="./ressources/css/login.css">
     <link rel="stylesheet" href="./ressources/css/evento_org.css">
     <link rel="stylesheet" href="./ressources/css/eventointercoment.css">
     <link rel="stylesheet" href="./ressources/css/media.css">
@@ -31,7 +30,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
         <nav class="navbar">
             <a href="index.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="#eventos">Eventos</a>
+            <a href="eventos.php"">Eventos</a>
             <a href="orgent.php">Organizadores</a>      
         </nav>
         <div class="icons">            
@@ -80,17 +79,16 @@ include("/laragon/www/conexaolocal/api/logic.php");
 
 
 
-    <section class="eventos" id="eventos">
+    <section class="login" id="login">
         <form action="" method="post">
-            
-            <input type="text" name="" class="box" placeholder="Nome do evento" id="">
-            <input type="text" name="" class="box" placeholder="Organizador" id="">
-            <input type="text" name="" class="box" placeholder="Descrição" id="">
-            <a href=""><i class="fa-regular fa-heart"></i></a>
-            <a href=""><i class="fa-solid fa-heart"></i></a>
-
-            <textarea class="box" name="" id="" placeholder="Deixe aqui seu comentário"></textarea>
-            <input type="submit" value="Enviar" class="btn" name="adicionar_cmt">
+            <h3>Login</h3>
+            <input type="text" name="" class="box" placeholder="Digite seu username" id="">
+            <input type="password" name="" class="box" placeholder="Digite sua senha" id="">
+            <input type="submit" value="Enviar" class="btn" name="login">
+            <input type="checkbox" name="" id="remenber">
+            <label for="remenber">Lembre-se de mim</label>
+            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
+            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
         </form>   
     </section>
 

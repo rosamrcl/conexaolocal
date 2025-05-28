@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] ==='POST' && isset($_POST['login'])){
         $stmt = $pdo->prepare("SELECT * FROM usuario (username,  senha) VALUES (?, ?)");
         $stmt->execute([$_POST['username'], 
         $_POST['senha']]);
-        header("Location: index.php");
+        header("Location: eventos.php");
         exit();
     }
 }

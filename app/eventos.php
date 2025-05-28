@@ -2,6 +2,7 @@
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
 
+
 ?>
 
 <!DOCTYPE html>
@@ -15,6 +16,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
     <link rel="stylesheet" href="./ressources/css/header.css">
     <link rel="stylesheet" href="./ressources/css/cadastro.css">
     <link rel="stylesheet" href="./ressources/css/home.css">
+    <link rel="stylesheet" href="./ressources/css/login.css">
     <link rel="stylesheet" href="./ressources/css/evento_org.css">
     <link rel="stylesheet" href="./ressources/css/eventointercoment.css">
     <link rel="stylesheet" href="./ressources/css/media.css">
@@ -28,7 +30,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
         <nav class="navbar">
             <a href="index.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="eventos.php"">Eventos</a>
+            <a href="eventos.php">Eventos</a>
             <a href="orgent.php">Organizadores</a>      
         </nav>
         <div class="icons">            
@@ -50,7 +52,8 @@ include("/laragon/www/conexaolocal/api/logic.php");
             <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
         </form>
     </div>
-    <section class="home" id="home">
+
+    <section class="home" id="home">        
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
             <figure>
@@ -73,39 +76,18 @@ include("/laragon/www/conexaolocal/api/logic.php");
             </figure>
         </div>
     </section>
-    <section class="organizadores" id="organizadores">
+    <section class="eventos" id="eventos">
         <form action="" method="post">
-            <h3>Cadastre organizador</h3>
-            <?php foreach ($orgs as $org):?>
-            <input type="text" name="<?=$org['id_usuario']?>"<?=$org['username']?> class="box" placeholder="Username" id="">
-            <?php endforeach;?>
-            <input type="text" name="nome_org" class="box" placeholder="Nome do organizador" id="">
-            <input type="submit" value="Cadastrar" class="btn" name="adicionar_organizador">
-        </form>
-        <form action="" method="post">
-            <h3>Cadastre seu evento</h3>
-
             
-            <input type="text" name="id_org" class="box" placeholder="Organizador" id="">
-            <input type="text" name="nome_evt" class="box" placeholder="Nome do evento" id="">
-            <input type="text" name="descricao" class="box" placeholder="Descrição" id="">
-            
-            <label for="inicio">Inicio</label>
-            <input class="box" type="date" name="start_date_event" id="">
-            <label for="inicio">Fim</label>
-            <input class="box" type="date" name="end_date" id="">           
-            
-            <input type="text" name="local_evento" class="box" placeholder="Local do evento" id="">
-            <input type="text" name="endereco" class="box" placeholder="Endereço do evento" id="">
-            <input type="text" name="cidade" class="box" placeholder="Cidade do evento" id="">
-            <input type="number" name="preco" class="box" placeholder="Preço do evento" id="">
-            <input type="text" name="status_evento" class="box" placeholder="Status do evento" id="">
-            
-
-            <input type="submit" value="Cadastrar" class="btn" name="adicionar_evento">
-        </form>
+            <input type="text" name="" class="box" placeholder="Nome do evento" id="">
+            <input type="text" name="" class="box" placeholder="Organizador" id="">
+            <input type="text" name="" class="box" placeholder="Descrição" id="">
+            <a href=""><i class="fa-regular fa-heart"></i></a>
+            <a href=""><i class="fa-solid fa-heart"></i></a>
+            <textarea class="box" name="" id="" placeholder="Deixe aqui seu comentário"></textarea>
+            <input type="submit" value="Enviar" class="btn" name="adicionar_cmt">
+        </form>   
     </section>
-
 
 
     <script src="./ressources/js/script.js"></script>

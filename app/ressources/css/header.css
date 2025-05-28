@@ -58,7 +58,7 @@
 }
 .login-form-container form h3{
     font-size: 3rem;
-    color: var(--cinza);
+    color: var(--letra);
     text-transform: uppercase;
     text-align: center;
     padding: 1rem 0;
@@ -88,7 +88,7 @@
 .login-form-container form p{
     padding: .5rem 0;
     font-size: 1.5rem;
-    color: var(--cinza);
+    color: var(--letra);
 }
 .login-form-container form p a{
     color: var(--azul);
