@@ -1,6 +1,7 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
+include("/laragon/www/conexaolocal/api/login.php");
 
 
 ?>
