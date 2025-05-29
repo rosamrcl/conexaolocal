@@ -1,6 +1,8 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
+include("/laragon/www/conexaolocal/api/login.php");
+
 
 
 ?>
@@ -82,8 +84,8 @@ include("/laragon/www/conexaolocal/api/logic.php");
     <section class="login" id="login">
         <form action="" method="post">
             <h3>Login</h3>
-            <input type="text" name="" class="box" placeholder="Digite seu username" id="">
-            <input type="password" name="" class="box" placeholder="Digite sua senha" id="">
+            <input type="text" name="username" class="box" placeholder="Digite seu username" id="">
+            <input type="password" name=""senha class="box" placeholder="Digite sua senha" id="">
             <input type="submit" value="Enviar" class="btn" name="login">
             <input type="checkbox" name="" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
@@ -91,7 +93,9 @@ include("/laragon/www/conexaolocal/api/logic.php");
             <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
         </form>   
     </section>
-
+<footer class="footer">
+    <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
+</footer>
 
     <script src="./ressources/js/script.js"></script>
 </body>

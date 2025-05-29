@@ -1,30 +1,38 @@
 <?php
 include ('/laragon/www/conexaolocal/api/config.php');
 
-session_start();
+if ($_SERVER['REQUEST_METHOD'] ==='POST'){
+    $login=$_POST['username'] ?? '';
+    $senha=$_POST['senha'] ?? '';
 
-if(empty($_POST) or (empty($_POST["username"]) or (empty($_POST ["senha"])))){
-    header('Location: index.php');
-    exit();
+    if(empty($login)|| empty($senha)){
+        echo json_encode(["status"=>"erro","mensagem"=>"Preencha todos os campos."]);
+        exit;
+    }
 }
 
-$username = $_POST["username"];
-$senha = $_POST["senha"];
-$sql = "SELECT * FROM usuario WHERE username = '($username)' AND senha ='($senha)'";
+$sql="SELECT * FROM usuario WHERE username = :login";
+$stmt = $pdo -> prepare($sql);
+$stmt->bindParam(':login',$login);
+$stmt->execute();
 
-$res = $conn ->query($sql) or die($conn->error);
 
-$row = $res->fetch_object();
-$qtd = $res->num_rows;
+$usuario=$stmt->fetch(PDO::FETCH_ASSOC);
 
-if($qtd >0){
-    $_SESSION["username"] = $username;
-    $_SESSION["nome"] = $row->nome;
-    header('Location: dashboard.php');
-    exit();
+
+if($usuario && password_verify($senha, $usuario['senha'])){
+    echo json_encode([
+        "status" => "sucesso",
+        "mensagem" => "Login realizado com sucesso!",
+        "usuario"=> [
+            "id" => $usuario['id_usuario'],
+            "nome" => $usuario['nome'],
+            "username" => $usuario['username'],
+            "email" => $usuario['email']
+            ]
+        ]);
 }else{
-    header('Location: index.php');
-    exit();
+    echo json_encode(["status" => "erro", "mensagem" => "Usuário ou senha inválida."]);
 }
 
 ?>
