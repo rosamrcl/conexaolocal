@@ -9,10 +9,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $nome = trim($_POST['nome'] ?? '');
     $username = trim($_POST['username'] ?? '');
     $email = trim($_POST['email'] ?? '');
+    $user_type = $_POST['user_type'];
     $senha = $_POST['senha'] ?? ''; 
+    $csenha = $_POST['csenha'] ?? ''; 
 
     // 2. Validação de campos vazios
-    if (empty($nome) || empty($username) || empty($email) || empty($senha)) {
+    if (empty($nome) || empty($username) || empty($email) || empty($user_type) || empty($senha)) {
         header("Location: index.php?erro=campos_vazios");
         exit();
     }
@@ -33,19 +35,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
     $hashedPassword = password_hash($senha, PASSWORD_DEFAULT);
 
     // 5. Prepara e executa a inserção no banco de dados
-    $stmt = $pdo->prepare("INSERT INTO usuario (nome, username, email, senha) VALUES (:nome, :username, :email, :senha)");
+    $stmt = $pdo->prepare("INSERT INTO usuario (nome, username, email,user_type senha) VALUES (:nome, :username, :email, :user_type, :senha)");
     $stmt->bindParam(':nome', $nome);
     $stmt->bindParam(':username', $username);
     $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':user_type', $user_type);
     $stmt->bindParam(':senha', $hashedPassword);
 
     if ($stmt->execute()) {
         // Redireciona para a página principal após o sucesso
-        header("Location: index.php?sucesso=cadastro");
+        header("Location: index.php");
         exit();
     } else {
-        header("Location: index.php?erro=cadastro_falhou");
-        exit();
+            $errors[] = "Erro ao registrar o usuário. Tente novamente.";
     }
 }
 ?>

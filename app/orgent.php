@@ -1,7 +1,11 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
-include("/laragon/www/conexaolocal/api/login.php");
+session_start();
+if(!isset($_SESSION['org_name'])){
+    header('Location?login.php');
+    exit;
+}
 
 ?>
 
