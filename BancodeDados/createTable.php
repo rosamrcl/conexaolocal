@@ -7,7 +7,6 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS usuario (
     nome VARCHAR(250) NOT NULL,
     username VARCHAR(250) UNIQUE NOT NULL,
     email VARCHAR(250) UNIQUE NOT NULL,
-    user_type ENUM ('user', 'org') DEFAULT 'user', 
     senha VARCHAR(250) NOT NULL
 )");
 

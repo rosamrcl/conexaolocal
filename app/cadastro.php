@@ -81,12 +81,7 @@ include("/laragon/www/conexaolocal/api/logic.php");
                 <input type="text" name="nome" class="box" placeholder="Seu nome" id="">
                 <input type="text" name="username" class="box" placeholder="Seu username" id="">
                 <input type="email" name="email" class="box" placeholder="Seu email" id="">
-                <select class="box" name="user-type" id="">
-                    <option value="user">USER</option>
-                    <option value="org">ORG</option>
-                </select>
                 <input type="password" name="senha" class="box" placeholder="Sua senha" id="">
-                <input type="password" name="csenha" class="box" placeholder="Confirme sua senha" id="">
                 <input type="submit" name="adicionar" value="Cadastrar" class="btn">
             </form>
         </div>
