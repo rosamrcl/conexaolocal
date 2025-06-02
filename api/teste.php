@@ -169,7 +169,3 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS comentario (
     FOREIGN KEY (id_evt) REFERENCES evento(id_evt)
 )");
 ?>
-
-
-
-?>
