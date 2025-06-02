@@ -1,12 +1,13 @@
 <?php
-include ("/laragon/www/conexaolocal/api/config.php");
-include ("/laragon/www/conexaolocal/api/logic.php");
-include("/laragon/www/conexaolocal/api/login.php");
+include("/laragon/www/conexaolocal/api/config.php");
+include("/laragon/www/conexaolocal/api/logic.php");
+
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,6 +21,7 @@ include("/laragon/www/conexaolocal/api/login.php");
     <link rel="stylesheet" href="./ressources/css/media.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <header class="header">
         <div id="menu-bar" class="fas fa-bars"></div>
@@ -28,16 +30,16 @@ include("/laragon/www/conexaolocal/api/login.php");
             <a href="index.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
             <a href="#eventos">Eventos</a>
-            <a href="orgent.php">Organizadores</a>      
+            <a href="orgent.php">Organizadores</a>
         </nav>
-        <div class="icons">            
+        <div class="icons">
             <i class="fas fa-user" id="login-btn"></i>
         </div>
-        
+
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
-        
+
         <form action="" method="get">
             <h3>Login</h3>
             <input type="text" class="box" name="username" placeholder="Digite seu username">
@@ -49,7 +51,7 @@ include("/laragon/www/conexaolocal/api/login.php");
             <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
         </form>
     </div>
-        <section class="home" id="home">
+    <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
             <figure>
@@ -76,16 +78,17 @@ include("/laragon/www/conexaolocal/api/login.php");
         <div class="cadastro">
             <form action="" method="post">
                 <h3>Faça seu cadastro</h3>
-                    <input type="text" name="nome" class="box" placeholder="Seu nome" id="">
-                    <input type="text" name="username" class="box" placeholder="Seu username" id="">
-                    <input type="email" name="email" class="box" placeholder="Seu email" id="">              
-                    <input type="password" name="senha" class="box" placeholder="Sua senha" id="">
-                    <input type="submit" name="adicionar" value="Cadastrar" class="btn">
+                <input type="text" name="nome" class="box" placeholder="Seu nome" id="">
+                <input type="text" name="username" class="box" placeholder="Seu username" id="">
+                <input type="email" name="email" class="box" placeholder="Seu email" id="">
+                <input type="password" name="senha" class="box" placeholder="Sua senha" id="">
+                <input type="submit" name="adicionar" value="Cadastrar" class="btn">
             </form>
         </div>
     </section>
 
 
-<script src="./ressources/js/script.js"></script>
+    <script src="./ressources/js/script.js"></script>
 </body>
+
 </html>

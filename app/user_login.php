@@ -1,11 +1,9 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
-session_start();
-if(!isset($_SESSION['org_name'])){
-    header('Location?login.php');
-    exit;
-}
+include("/laragon/www/conexaolocal/api/login.php");
+
+
 
 ?>
 
@@ -20,6 +18,7 @@ if(!isset($_SESSION['org_name'])){
     <link rel="stylesheet" href="./ressources/css/header.css">
     <link rel="stylesheet" href="./ressources/css/cadastro.css">
     <link rel="stylesheet" href="./ressources/css/home.css">
+    <link rel="stylesheet" href="./ressources/css/login.css">
     <link rel="stylesheet" href="./ressources/css/evento_org.css">
     <link rel="stylesheet" href="./ressources/css/eventointercoment.css">
     <link rel="stylesheet" href="./ressources/css/media.css">
@@ -55,7 +54,8 @@ if(!isset($_SESSION['org_name'])){
             <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
         </form>
     </div>
-    <section class="home" id="home">
+
+    <section class="home" id="home">        
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
             <figure>
@@ -78,40 +78,19 @@ if(!isset($_SESSION['org_name'])){
             </figure>
         </div>
     </section>
-    <section class="organizadores" id="organizadores">
-        <form action="" method="post">
-            <h3>Cadastre organizador</h3>
-            <?php foreach ($orgs as $org):?>
-            <input type="text" name="<?=$org['id_usuario']?>"<?=$org['username']?> class="box" placeholder="Username" id="">
-            <?php endforeach;?>
-            <input type="text" name="nome_org" class="box" placeholder="Nome do organizador" id="">
-            <input type="submit" value="Cadastrar" class="btn" name="adicionar_organizador">
-        </form>
-        <form action="" method="post">
-            <h3>Cadastre seu evento</h3>
+<div class="container">
+    <div class="content">
+        <h3>Olá, <span>username</span></h3>
+        <h1>Bem Vindo <span></span></h1>
+        <a href="index.php" class="btn">Login</a>
+        <a href="cadastro.php" class="btn">Cadastro</a>
+        <a href="logout.php" class="btn">Logout</a>
+    </div>
+</div>
 
-            
-            <input type="text" name="id_org" class="box" placeholder="Organizador" id="">
-            <input type="text" name="nome_evt" class="box" placeholder="Nome do evento" id="">
-            <input type="text" name="descricao" class="box" placeholder="Descrição" id="">
-            
-            <label for="inicio">Inicio</label>
-            <input class="box" type="date" name="start_date_event" id="">
-            <label for="inicio">Fim</label>
-            <input class="box" type="date" name="end_date" id="">           
-            
-            <input type="text" name="local_evento" class="box" placeholder="Local do evento" id="">
-            <input type="text" name="endereco" class="box" placeholder="Endereço do evento" id="">
-            <input type="text" name="cidade" class="box" placeholder="Cidade do evento" id="">
-            <input type="number" name="preco" class="box" placeholder="Preço do evento" id="">
-            <input type="text" name="status_evento" class="box" placeholder="Status do evento" id="">
-            
-
-            <input type="submit" value="Cadastrar" class="btn" name="adicionar_evento">
-        </form>
-    </section>
-
-
+<footer class="footer">
+    <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
+</footer>
 
     <script src="./ressources/js/script.js"></script>
 </body>
