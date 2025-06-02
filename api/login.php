@@ -1,5 +1,7 @@
 <?php
-include ('/laragon/www/conexaolocal/api/config.php');
+include ("/laragon/www/conexaolocal/api/config.php");
+
+session_start();
 
 
 if ($_SERVER['REQUEST_METHOD']==='POST'){
@@ -18,14 +20,19 @@ if ($_SERVER['REQUEST_METHOD']==='POST'){
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($senha, $user['senha'])){
+        $_SESSION['usuario']=[
+            'id_usuario'=>$user['id_usuario'],
+            'nome'=>$user['nome'],
+            'username'=>$user['username'],
+            'email'=>$user['email']
+        ];
         header("Location: /laragon/www/conexaolocal/app/eventos.php");
-        exit();
+        exit;
     }else{
-        echo json_encode(["status"=>"erro", "mensagem"=>"Usuário ou senha inválida."]);
+        $_SESSION['erro_login']="Usuário ou senha inválidos";
+        header('Location: /laragon/www/conexaolocal/app/login.php');
+        exit;
     }
-
-}else{
-    echo json_encode(["status" => "erro", "mensagem"=> "Metódo inválido. Use POST."]); 
 }
 
 ?>

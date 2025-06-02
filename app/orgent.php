@@ -1,11 +1,9 @@
 <?php
 include("/laragon/www/conexaolocal/api/config.php");
 include("/laragon/www/conexaolocal/api/logic.php");
-session_start();
-if(!isset($_SESSION['org_name'])){
-    header('Location?login.php');
-    exit;
-}
+include("/laragon/www/conexaolocal/api/login.php");
+
+
 
 ?>
 
@@ -31,7 +29,7 @@ if(!isset($_SESSION['org_name'])){
         <div id="menu-bar" class="fas fa-bars"></div>
         <a target="_blank" href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
-            <a href="index.php">Home</a>
+            <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
             <a href="eventos.php"">Eventos</a>
             <a href="orgent.php">Organizadores</a>      
@@ -44,7 +42,7 @@ if(!isset($_SESSION['org_name'])){
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
         
-        <form action="" method="get">
+        <form action="" method="POST">
             <h3>Login</h3>
             <input type="text" class="box" name="username" placeholder="Digite seu username">
             <input type="password" class="box" name="senha" placeholder="Digite sua senha">
