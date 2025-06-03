@@ -30,9 +30,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         <a target="_blank" href="index.php" class="logo"><img src="./ressources/img/logo.png" alt=""></a>
         <nav class="navbar">
             <a href="login.php">Home</a>
-            <a href="cadastro.php">Cadastro</a>
-            <a href="eventos.php"">Eventos</a>
-            <a href="orgent.php">Organizadores</a>      
+            <a href="cadastro.php">Cadastro</a>     
         </nav>
         <div class="icons">            
             <i class="fas fa-user" id="login-btn"></i>

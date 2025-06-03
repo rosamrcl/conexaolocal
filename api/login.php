@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['se
 
     // Busca o usuário pelo username
     $sql = "SELECT id_usuario, nome, username, email, user_type, senha FROM usuario WHERE username = :username";
-    $stmt = $conn->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
 
@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['se
 
             // Redireciona com base no tipo de usuário
             if ($usuario['user_type'] == 'Organizador') {
-                header("Location: /laragon/www/conexaolocal/app/eventos.php");
+                header("Location: organizador.php");
                 exit;
             } elseif ($usuario['user_type'] == 'Usuário') {
-                header("Location: /laragon/www/conexaolocal/app/orgent.php");
+                header("Location: evento.php");
                 exit;
             } else {
                 // Handle unexpected user_type

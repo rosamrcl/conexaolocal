@@ -3,9 +3,7 @@ require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/logic.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
 
-
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -31,8 +29,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="eventos.php">Eventos</a>
-            <a href="orgent.php">Organizadores</a>      
+            <a href="evento.php"">Eventos</a>      
         </nav>
         <div class="icons">            
             <i class="fas fa-user" id="login-btn"></i>
@@ -42,12 +39,19 @@ require_once('/laragon/www/conexaolocal/api/login.php');
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
         
-        <form action="" method="POST">
+        <form action="" method="POST">            
             <h3>Login</h3>
+            <?php
+                if (isset($error)) {
+                    foreach ($error as $error) { 
+                        echo '<span class="error_msg">' . $errorMessage . '</span>';
+                    }
+                }
+            ?>       
             <input type="text" class="box" name="username" placeholder="Digite seu username">
             <input type="password" class="box" name="senha" placeholder="Digite sua senha">
             <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="" id="remenber">
+            <input type="checkbox" name="enviar" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
             <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
@@ -77,19 +81,12 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             </figure>
         </div>
     </section>
-    <section class="eventos" id="eventos">
-        <form action="" method="post">
-            
-            <input type="text" name="" class="box" placeholder="Nome do evento" id="">
-            <input type="text" name="" class="box" placeholder="Organizador" id="">
-            <input type="text" name="" class="box" placeholder="Descrição" id="">
-            <a href=""><i class="fa-regular fa-heart"></i></a>
-            <a href=""><i class="fa-solid fa-heart"></i></a>
-            <textarea class="box" name="" id="" placeholder="Deixe aqui seu comentário"></textarea>
-            <input type="submit" value="Enviar" class="btn" name="adicionar_cmt">
-        </form>   
-    </section>
+    <h1>Olá</h1>
 
+
+<footer class="footer">
+    <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
+</footer>
 
     <script src="./ressources/js/script.js"></script>
 </body>

@@ -29,8 +29,6 @@ require_once('/laragon/www/conexaolocal/api/logic.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="#eventos">Eventos</a>
-            <a href="orgent.php">Organizadores</a>
         </nav>
         <div class="icons">
             <i class="fas fa-user" id="login-btn"></i>
