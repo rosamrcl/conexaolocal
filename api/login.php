@@ -3,35 +3,53 @@ require_once('/laragon/www/conexaolocal/api/config.php');
 
 
 //login
-session_start();
-if (isset($_POST['enviar'])) {
-    $name = $_POST['nome'];
-    $username = $_POST['username']; 
-    $email = $_POST['email'];
-    $senha = ($_POST['senha']);
-    $csenha = ($_POST['csenha']);
-    $user_type = $_POST['user_type'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['senha'])) {
 
-    
-    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE username = :username AND senha = :senha");
-    $stmt->execute(['username' => $username, 'senha' => $senha]);
-    $row = $stmt->fetch(); // Pega a primeira linha de resultado
+    $username = $_POST['username'];
+    $senha = $_POST['senha'];
 
-    if ($row) { // Se uma linha foi encontrada
-        if ($row['user_type'] == 'organizador') {
-            $_SESSION['admin_name'] = $row['nome'];
-            header('Location: orgent.php');
-            exit(); 
-        } elseif ($row['user_type'] == 'usuario') {
-            $_SESSION['user_name'] = $row['nome'];
-            header('Location: eventos.php');
-            exit(); 
+    // Busca o usuário pelo username
+    $sql = "SELECT id_usuario, nome, username, email, user_type, senha FROM usuario WHERE username = :username";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':username', $username);
+    $stmt->execute();
+
+    $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($usuario) {
+        // Verifica se a senha bate com o hash armazenado
+        if (password_verify($senha, $usuario['senha'])) {
+            // Sucesso no login, armazena dados na sessão
+            $_SESSION['id_usuario'] = $usuario['id_usuario'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['username'] = $usuario['username'];
+            $_SESSION['user_type'] = $usuario['user_type']; // Store user_type in session for easier access
+
+            // Redireciona com base no tipo de usuário
+            if ($usuario['user_type'] == 'Organizador') {
+                header("Location: /laragon/www/conexaolocal/app/eventos.php");
+                exit;
+            } elseif ($usuario['user_type'] == 'Usuário') {
+                header("Location: /laragon/www/conexaolocal/app/orgent.php");
+                exit;
+            } else {
+                // Handle unexpected user_type
+                $_SESSION['error_message'] = "Tipo de usuário desconhecido.";
+                header("Location: /laragon/www/conexaolocal/app/login.php"); // Redirect to login or an error page
+                exit;
+            }
+        } else {
+            // Senha incorreta
+            $_SESSION['error_message'] = "Senha incorreta!";
+            header("Location: /laragon/www/conexaolocal/app/login.php"); // Redirect back to login page
+            exit;
         }
     } else {
-        $error[] = 'Username ou senha incorreta';
+        // Usuário não encontrado
+        $_SESSION['error_message'] = "Usuário não encontrado!";
+        header("Location: /laragon/www/conexaolocal/app/login.php"); // Redirect back to login page
+        exit;
     }
 }
-
 ?>
 
-?>

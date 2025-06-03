@@ -80,7 +80,7 @@ require_once('/laragon/www/conexaolocal/api/logic.php');
                 <h3>Faça seu cadastro</h3>
                 <?php
                 if (isset($error)) {
-                    foreach ($error as $errorMessage) { 
+                    foreach ($error as $error) { 
                         echo '<span class="error_msg">' . $errorMessage . '</span>';
                     }
                 }
@@ -90,7 +90,7 @@ require_once('/laragon/www/conexaolocal/api/logic.php');
                 <input type="email" name="email" class="box" placeholder="Seu email" id="">
                 <input type="password" name="senha" class="box" placeholder="Sua senha" id="">
                 <input type="password" name="csenha" placeholder="Confirme sua senha" class="box" required>
-                    <select name="user-type" id="" class="box">
+                    <select name="user_type" id="" class="box">
                         <option value="usuario">Usuário</option>
                         <option value="organizador">Organizador</option>
                     </select>

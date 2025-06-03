@@ -46,7 +46,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             <h3>Login</h3>
             <?php
                 if (isset($error)) {
-                    foreach ($error as $errorMessage) { 
+                    foreach ($error as $error) { 
                         echo '<span class="error_msg">' . $errorMessage . '</span>';
                     }
                 }

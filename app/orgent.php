@@ -5,6 +5,7 @@ include("/laragon/www/conexaolocal/api/login.php");
 
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +80,7 @@ include("/laragon/www/conexaolocal/api/login.php");
     <section class="organizadores" id="organizadores">
         <form action="" method="post">
             <h3>Cadastre organizador</h3>
-            <?php foreach ($orgs as $org):?>
-            <input type="text" name="<?=$org['id_usuario']?>"<?=$org['username']?> class="box" placeholder="Username" id="">
-            <?php endforeach;?>
+    
             <input type="text" name="nome_org" class="box" placeholder="Nome do organizador" id="">
             <input type="submit" value="Cadastrar" class="btn" name="adicionar_organizador">
         </form>
