@@ -1,14 +1,17 @@
 <?php
 require_once('/laragon/www/conexaolocal/api/config.php');
 
+if (isset($_POST['adicionar'])){
+    $user_type = $_POST['user_type'];
+}
 
 if (isset($_POST['adicionar'])) {
     $nome = $_POST['nome'];
     $username = $_POST['username'];
     $email = $_POST['email'];
-    $user_type = $_POST['user_type'] ?? 'Usuário';
     $senha = ($_POST['senha']); 
     $csenha = ($_POST['csenha']);
+    $user_type = $_POST['user_type'];
 
     $errors = []; 
     // 1. Verificar se o usuário já existe
