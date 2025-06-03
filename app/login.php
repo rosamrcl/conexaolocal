@@ -54,7 +54,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             <input type="text" class="box" name="username" placeholder="Digite seu username">
             <input type="password" class="box" name="senha" placeholder="Digite sua senha">
             <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="" id="remenber">
+            <input type="checkbox" name="enviar" id="remenber">
             <label for="remenber">Lembre-se de mim</label>
             <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
             <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>

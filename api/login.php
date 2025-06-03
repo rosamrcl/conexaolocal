@@ -4,7 +4,7 @@ require_once('/laragon/www/conexaolocal/api/config.php');
 
 //login
 session_start();
-if (isset($_POST['submit'])) {
+if (isset($_POST['enviar'])) {
     $name = $_POST['nome'];
     $username = $_POST['username']; 
     $email = $_POST['email'];
@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
     $csenha = ($_POST['csenha']);
     $user_type = $_POST['user_type'];
 
-    // Usando prepared statement para SELECT
+    
     $stmt = $pdo->prepare("SELECT * FROM usuario WHERE username = :username AND senha = :senha");
     $stmt->execute(['username' => $username, 'senha' => $senha]);
     $row = $stmt->fetch(); // Pega a primeira linha de resultado
