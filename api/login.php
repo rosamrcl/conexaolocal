@@ -1,38 +1,37 @@
 <?php
-include ("/laragon/www/conexaolocal/api/config.php");
+require_once('/laragon/www/conexaolocal/api/config.php');
 
+
+//login
 session_start();
+if (isset($_POST['submit'])) {
+    $name = $_POST['nome'];
+    $username = $_POST['username']; 
+    $email = $_POST['email'];
+    $senha = ($_POST['senha']);
+    $csenha = ($_POST['csenha']);
+    $user_type = $_POST['user_type'];
 
+    // Usando prepared statement para SELECT
+    $stmt = $pdo->prepare("SELECT * FROM usuario WHERE username = :username AND senha = :senha");
+    $stmt->execute(['username' => $username, 'senha' => $senha]);
+    $row = $stmt->fetch(); // Pega a primeira linha de resultado
 
-if ($_SERVER['REQUEST_METHOD']==='POST'){
-    $login = $_POST['username'] ?? '';
-    $senha = $_POST['senha'] ?? '';
-
-    if(empty($login)|| empty($senha)){
-        echo json_encode(["status" => "erro", "mensagem" => "Preencha todos os campos."]);
-        exit;
-    }
-    $sql = "SELECT * FROM usuario WHERE email= :login OR username = :login";
-    $stmt = $pdo->prepare($sql);
-    $stmt ->bindParam(':login',$login);
-    $stmt->execute();
-    
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($user && password_verify($senha, $user['senha'])){
-        $_SESSION['usuario']=[
-            'id_usuario'=>$user['id_usuario'],
-            'nome'=>$user['nome'],
-            'username'=>$user['username'],
-            'email'=>$user['email']
-        ];
-        header("Location: /laragon/www/conexaolocal/app/eventos.php");
-        exit;
-    }else{
-        $_SESSION['erro_login']="Usuário ou senha inválidos";
-        header('Location: /laragon/www/conexaolocal/app/login.php');
-        exit;
+    if ($row) { // Se uma linha foi encontrada
+        if ($row['user_type'] == 'organizador') {
+            $_SESSION['admin_name'] = $row['nome'];
+            header('Location: orgent.php');
+            exit(); 
+        } elseif ($row['user_type'] == 'usuario') {
+            $_SESSION['user_name'] = $row['nome'];
+            header('Location: eventos.php');
+            exit(); 
+        }
+    } else {
+        $error[] = 'Username ou senha incorreta';
     }
 }
+
+?>
 
 ?>

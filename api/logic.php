@@ -1,53 +1,65 @@
 <?php
-include ("/laragon/www/conexaolocal/api/config.php");
+require_once('/laragon/www/conexaolocal/api/config.php');
 
+if (isset($_GET['adicionar'])){
+    $user_type = $_GET['user_type'];
+}
+if (isset($_POST['adicionar'])) {
+    $nome = $_POST['nome'];
+    $username = $_POST['username'];
+    $email = $_POST['email'];    
+    $senha = ($_POST['senha']); 
+    $csenha = ($_POST['csenha']);
 
+    $errors = []; 
+    // 1. Verificar se o usuário já existe
+    $stmt_select = $pdo->prepare("SELECT * FROM usuario WHERE username = :username OR email = :email");
+    $stmt_select->bindParam(':username', $username);
+    $stmt_select->bindParam(':email', $email);
+    $stmt_select->execute();
 
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar'])) {
-    // 1. Coleta e sanitiza os dados do formulário
-    $nome = trim($_POST['nome'] ?? '');
-    $username = trim($_POST['username'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $senha = $_POST['senha'] ?? ''; 
-
-    // 2. Validação de campos vazios
-    if (empty($nome) || empty($username) || empty($email) || empty($senha)) {
-        header("Location: index.php?erro=campos_vazios");
-        exit();
+    if ($stmt_select->rowCount() > 0) {
+        $errors[] = "Nome de usuário ou e-mail já existe!";
     }
 
-    // 3. Verifica se já existe um usuário ou e-mail cadastrado
-    $check = $pdo->prepare("SELECT id_usuario FROM usuario WHERE username = :username OR email = :email");
-    $check->bindParam(':username', $username);
-    $check->bindParam(':email', $email);
-    $check->execute();
-
-    if ($check->rowCount() > 0) {
-        echo "Usuário ou e-mail já cadastrados.";
-        header("Location: index.php?erro=usuario_email_duplicado");
-        exit();
+    // 2. Verificar se as senhas coincidem
+    if ($senha !== $csenha) {
+        $errors[] = "As senhas não são iguais!";
     }
 
-    // 4. Hash da senha para segurança
     $hashedPassword = password_hash($senha, PASSWORD_DEFAULT);
 
-    // 5. Prepara e executa a inserção no banco de dados
-    $stmt = $pdo->prepare("INSERT INTO usuario (nome, username, email, senha) VALUES (:nome, :username, :email, :senha)");
-    $stmt->bindParam(':nome', $nome);
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':email', $email);
-    $stmt->bindParam(':senha', $hashedPassword);
+    // 3. Se não houver erros, inserir o novo usuário
+    if (empty($errors)) {  
+        $stmt = $pdo->prepare("INSERT INTO usuario (nome, username, email, senha, user_type) VALUES (:nome, :username, :email, :senha, :user_type)");
+        $stmt->bindParam(':nome', $nome);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':user_type', $user_type);
+        $stmt->bindParam(':senha', $hashedPassword);
 
-    if ($stmt->execute()) {
-        // Redireciona para a página principal após o sucesso
-        header("Location: login.php");
-        exit();
-    } else {
-        header("Location: cadastro.php");
-        exit();
+        if ($stmt->execute()) {
+            header('Location: login.php');
+            exit();
+        } else {
+            $errors[] = "Erro ao registrar o usuário. Tente novamente.";
+            
+        }
+    }
+
+    // Se houver erros, exiba-os (ou passe para a view/template)
+    if (!empty($errors)) {
+        foreach ($errors as $error) {
+            echo '<span class="error-msg">' . $error . '</span>';
+        }
     }
 }
+
+
+
+
+
+
 ?>
 
 

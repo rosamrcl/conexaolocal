@@ -1,10 +1,7 @@
 <?php
-include("/laragon/www/conexaolocal/api/config.php");
-include("/laragon/www/conexaolocal/api/logic.php");
-include("/laragon/www/conexaolocal/api/login.php");
-
-
-
+require_once('/laragon/www/conexaolocal/api/config.php');
+require_once('/laragon/www/conexaolocal/api/logic.php');
+require_once('/laragon/www/conexaolocal/api/login.php');
 
 
 ?>
@@ -45,8 +42,15 @@ include("/laragon/www/conexaolocal/api/login.php");
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
         
-        <form action="" method="POST">
+        <form action="" method="POST">            
             <h3>Login</h3>
+            <?php
+                if (isset($error)) {
+                    foreach ($error as $errorMessage) { 
+                        echo '<span class="error_msg">' . $errorMessage . '</span>';
+                    }
+                }
+            ?>       
             <input type="text" class="box" name="username" placeholder="Digite seu username">
             <input type="password" class="box" name="senha" placeholder="Digite sua senha">
             <input type="submit" name="login" class="btn" value="Enviar">

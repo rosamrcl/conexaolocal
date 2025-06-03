@@ -7,6 +7,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS usuario (
     nome VARCHAR(250) NOT NULL,
     username VARCHAR(250) UNIQUE NOT NULL,
     email VARCHAR(250) UNIQUE NOT NULL,
+    user_type ENUM('Organizador', 'Usuário') DEFAULT 'Usuário',
     senha VARCHAR(250) NOT NULL
 )");
 
@@ -17,6 +18,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS organizador (
     id_org INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT NOT NULL,
     nome_org VARCHAR(250) NOT NULL,
+    cnpj INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)  ON DELETE CASCADE
 )");
 

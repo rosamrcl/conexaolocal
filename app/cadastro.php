@@ -1,6 +1,6 @@
 <?php
-include("/laragon/www/conexaolocal/api/config.php");
-include("/laragon/www/conexaolocal/api/logic.php");
+require_once('/laragon/www/conexaolocal/api/config.php');
+require_once('/laragon/www/conexaolocal/api/logic.php');
 
 
 ?>
@@ -78,10 +78,22 @@ include("/laragon/www/conexaolocal/api/logic.php");
         <div class="cadastro">
             <form action="" method="post">
                 <h3>Faça seu cadastro</h3>
+                <?php
+                if (isset($error)) {
+                    foreach ($error as $errorMessage) { 
+                        echo '<span class="error_msg">' . $errorMessage . '</span>';
+                    }
+                }
+                ?>
                 <input type="text" name="nome" class="box" placeholder="Seu nome" id="">
                 <input type="text" name="username" class="box" placeholder="Seu username" id="">
                 <input type="email" name="email" class="box" placeholder="Seu email" id="">
                 <input type="password" name="senha" class="box" placeholder="Sua senha" id="">
+                <input type="password" name="csenha" placeholder="Confirme sua senha" class="box" required>
+                    <select name="user-type" id="" class="box">
+                        <option value="usuario">Usuário</option>
+                        <option value="organizador">Organizador</option>
+                    </select>
                 <input type="submit" name="adicionar" value="Cadastrar" class="btn">
             </form>
         </div>
