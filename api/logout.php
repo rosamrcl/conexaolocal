@@ -1,5 +1,5 @@
 <?php
-include ('/laragon/www/conexaolocal/api/config.php');
+require_once ('/laragon/www/conexaolocal/api/config.php');
 
 session_start();
 unset($_SESSION["username"]);

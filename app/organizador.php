@@ -33,31 +33,12 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             <a href="organizador.php">Organizador</a>      
         </nav>
         <div class="icons">            
-            <i class="fas fa-user" id="login-btn"></i>
+            <i class="fas fa-user" id="login-btn"></i> 
+            <span><?=$_SESSION['username']?></span>
         </div>
         
     </header>
-    <div class="login-form-container">
-        <i class="fas fa-times" id="form-close"></i>
-        
-        <form action="" method="POST">            
-            <h3>Login</h3>
-            <?php
-                if (isset($error)) {
-                    foreach ($error as $error) { 
-                        echo '<span class="error_msg">' . $errorMessage . '</span>';
-                    }
-                }
-            ?>       
-            <input type="text" class="box" name="username" placeholder="Digite seu username">
-            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
-            <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="enviar" id="remenber">
-            <label for="remenber">Lembre-se de mim</label>
-            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
-        </form>
-    </div>
+
 
     <section class="home" id="home">        
         <img src="./ressources/img/logo.png" alt="">
@@ -84,13 +65,13 @@ require_once('/laragon/www/conexaolocal/api/login.php');
     </section>
     <section class="organizadores">
 
-        <h1>Olá, fulana!</h1>
-        <h2>Bem-vindo! a área do organizador</h2>
+        
         <form class="box" action="" method="post">
+            <h2>Bem-vindo! a área do organizador</h2>
             <h3> Realize o cadastro da sua organização</h3>
             <input type="text" class="box" placeholder="Nome da organização">
             <input type="number" class="box" placeholder="CNPJ">
-            <input type="submit" value="Enviar" class="btn">
+            <input type="submit" value="Enviar" class="btn" name="adicionar_org">
     </section>
 
     </form>
