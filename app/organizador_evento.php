@@ -29,8 +29,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="evento.php"">Eventos</a>
-            <a href="organizador.php">Organizador</a>      
+            <a href="evento.php"">Eventos</a>      
         </nav>
         <div class="icons">            
             <i class="fas fa-user" id="login-btn"></i>
@@ -82,32 +81,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             </figure>
         </div>
     </section>
-    <section class="organizadores">
-        <h1>Olá, fulana!</h1>
-        <h2>Bem-vindo! a área do organizador</h2>
-        <form class="box" action="" method="post">
-            <h3> Realize o cadastro da seu evento</h3>
-            <input type="text" class="box" placeholder="Nome do evento">
-            <input type="text" class="box" placeholder="Descrição do evento">
-            <label for="inicio">Inicio</label>
-            <input class="box" type="datetime" name="inicio" id="">
-            <label for="Fim">Fim</label>
-            <input class="box" type="datetime" name="Fim" id="">
-            <input type="text" class="box" placeholder="Local">
-            <input type="text" class="box" placeholder="Endereço">
-            <input type="text" class="box" placeholder="Cidade">
-            <input type="number" class="box" placeholder="Preço">
-            <label for="status_evento">Status</label>
-            <select class="box" name="status_evento" id="">
-                <option class="box" value="Ativo">Ativo</option>
-                <option class="box" value="Cancelado">Cancelado</option>
-                <option class="box" value="Encerrado">Encerrado</option>
-            </select>
-            <input type="submit" value="Enviar" class="btn">
-    
-        </form>
-    </section>
-
+    <h1>Olá</h1>
 
 
 <footer class="footer">

@@ -5,7 +5,6 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
 
 
 
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -66,10 +65,16 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
         </div>
     </section>
     <section class="organizadores">
-
         
-        <form class="box" action="" method="post">
-            <h3> Realize o cadastro da sua organização</h3>  
+        <form class="box"  method="POST">
+            <h3> Realize o cadastro da sua organização</h3>
+            <?php
+                if (isset($errors)) {
+                    foreach ($errors as $errorMessage) { 
+                        echo '<span class="error_msg">' . $errorMessage . '</span>';
+                    }
+                }
+            ?>
             
             <input type="text" class="box" placeholder="Nome da organização" name="nome_org">
             <input type="number" class="box" placeholder="CNPJ" name="cnpj">

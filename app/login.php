@@ -88,6 +88,13 @@ require_once('/laragon/www/conexaolocal/api/login.php');
     <section class="login" id="login">
         <form action="" method="POST">
             <h3>Login</h3>
+            <?php
+                if (isset($errors)) {
+                    foreach ($errors as $errorMessage ) { 
+                        echo '<span class="error_msg">' . $errorMessage . '</span>';
+                    }
+                }
+            ?> 
             <input type="text" name="username" class="box" placeholder="Digite seu username" id="">
             <input type="password" name="senha" class="box" placeholder="Digite sua senha" id="">
             <input type="submit" value="Enviar" class="btn" name="login">

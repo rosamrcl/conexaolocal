@@ -49,7 +49,7 @@ if (isset($_POST['adicionar'])) {
         }
     }
 
-    // Se houver erros, exiba-os (ou passe para a view/template)
+    // Se houver erros, exiba-os 
     if (!empty($errors)) {
         foreach ($errors as $error) {
             echo '<span class="error-msg">' . $error . '</span>';

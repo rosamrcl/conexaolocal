@@ -77,8 +77,8 @@ require_once('/laragon/www/conexaolocal/api/logic.php');
             <form action="" method="post">
                 <h3>Faça seu cadastro</h3>
                 <?php
-                if (isset($error)) {
-                    foreach ($error as $error) { 
+                if (isset($errors)) {
+                    foreach ($errors as $errorMessage) { 
                         echo '<span class="error_msg">' . $errorMessage . '</span>';
                     }
                 }

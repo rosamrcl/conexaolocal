@@ -1,11 +1,11 @@
 <?php
 require_once('/laragon/www/conexaolocal/api/config.php');
 
-// Certifique-se de iniciar a sessão
+
 session_start();
 
 if (isset($_POST['adicionar_org'])) {
-    // Verificar se o id_usuario está na sessão
+    //Verificar se o id_usuario está na sessão
     if (isset($_SESSION['id_usuario'])) {
         $id_usuario = $_SESSION['id_usuario'];
     } else {
@@ -26,7 +26,7 @@ if (isset($_POST['adicionar_org'])) {
         $error[] = "Usuário não encontrado. Não é possível cadastrar a organização.";
     }
 
-    if(empty($error)){
+    if(empty($errors)){
         $stmt = $pdo->prepare("INSERT INTO organizador (nome_org, cnpj, id_usuario) VALUES (:nome_org, :cnpj, :id_usuario)");
         $stmt->bindParam(':nome_org', $nome_org);
         $stmt->bindParam(':cnpj', $cnpj);
@@ -40,8 +40,8 @@ if (isset($_POST['adicionar_org'])) {
         }
     } else {
         // Exibir os erros para o usuário
-        foreach ($error as $err) {
-            echo "<p style='color: red;'>$err</p>";
+            foreach ($errors as $error) {
+            echo '<span class="error-msg">' . $error . '</span>';
         }
     }
 }
