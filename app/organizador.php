@@ -1,7 +1,10 @@
 <?php
 require_once('/laragon/www/conexaolocal/api/config.php');
-require_once('/laragon/www/conexaolocal/api/logic.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
+require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -34,7 +37,6 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         </nav>
         <div class="icons">            
             <i class="fas fa-user" id="login-btn"></i> 
-            <span><?=$_SESSION['username']?></span>
         </div>
         
     </header>
@@ -67,14 +69,14 @@ require_once('/laragon/www/conexaolocal/api/login.php');
 
         
         <form class="box" action="" method="post">
-            <h2>Bem-vindo! a área do organizador</h2>
-            <h3> Realize o cadastro da sua organização</h3>
-            <input type="text" class="box" placeholder="Nome da organização">
-            <input type="number" class="box" placeholder="CNPJ">
+            <h3> Realize o cadastro da sua organização</h3>  
+            
+            <input type="text" class="box" placeholder="Nome da organização" name="nome_org">
+            <input type="number" class="box" placeholder="CNPJ" name="cnpj">
             <input type="submit" value="Enviar" class="btn" name="adicionar_org">
+        </form>
     </section>
 
-    </form>
 
 
 
