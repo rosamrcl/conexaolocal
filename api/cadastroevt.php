@@ -6,8 +6,7 @@ session_start();
 
 if (isset($_POST['adicionar_org'])) {
     //Verificar se o id_usuario está na sessão
-    if (!isset($_SESSION['id_usuario'])) {
-        header('Location: organizador_evento.php');
+    if (!isset($_SESSION['id_usuario'])) {       
         exit();
     }
 

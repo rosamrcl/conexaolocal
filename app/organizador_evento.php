@@ -2,6 +2,7 @@
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/logic.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
+require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
 
 ?>
 <!DOCTYPE html>
@@ -38,24 +39,6 @@ require_once('/laragon/www/conexaolocal/api/login.php');
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
-        
-        <form action="" method="POST">            
-            <h3>Login</h3>
-            <?php
-                if (isset($error)) {
-                    foreach ($error as $error) { 
-                        echo '<span class="error_msg">' . $errorMessage . '</span>';
-                    }
-                }
-            ?>       
-            <input type="text" class="box" name="username" placeholder="Digite seu username">
-            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
-            <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="enviar" id="remenber">
-            <label for="remenber">Lembre-se de mim</label>
-            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
-        </form>
     </div>
 
     <section class="home" id="home">        
@@ -81,7 +64,26 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             </figure>
         </div>
     </section>
-    <h1>Olá</h1>
+    <section class="organizadores">
+        <form class="box">
+            <h3>Cadastre seu evento</h3>
+            <input type="text" name="nome_evt" class="box"  placeholder="Nome do evento">
+            <input type="text" name="descricao" class="box" placeholder="Descrição">
+            <input type="date" name="start_date_event" id="" class="box">
+            <input type="date" name="end_date" id="" class="box">
+            <input type="text" name="local_evento" class="box" placeholder="Local do evento">
+            <input type="text" name="endereco" class="box" placeholder="Endereço">
+            <input type="text" name="cidade" class="box" placeholder="Cidade">         
+            <input type="number" name="preco" id="" class="box" placeholder="Preço">
+            <select name="" id="" class="box">
+                <option value="Ativo" class="box">Ativo</option>
+                <option value="Cancelado" class="box">Cancelado</option>
+                <option value="Encerrado" class="box">Encerrado</option>
+            </select>
+            <input type="submit" value="Enviar" class="btn">
+
+        </form>
+    </section>
 
 
 <footer class="footer">
