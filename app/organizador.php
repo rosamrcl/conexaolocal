@@ -2,9 +2,6 @@
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
 require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -31,7 +28,7 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="evento.php"">Eventos</a>
+            <a href="evento.php">Eventos</a>
             <a href="organizador.php">Organizador</a>      
         </nav>
         <div class="icons">            
@@ -76,6 +73,7 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
                 }
             ?>
             
+            <input type="text" class="box" name="id_usuario">
             <input type="text" class="box" placeholder="Nome da organização" name="nome_org">
             <input type="number" class="box" placeholder="CNPJ" name="cnpj">
             <input type="submit" value="Enviar" class="btn" name="adicionar_org">
