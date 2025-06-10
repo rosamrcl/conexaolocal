@@ -1,15 +1,12 @@
 <?php
-session_start();
+
 require_once('/laragon/www/conexaolocal/api/config.php');
 
-if (isset($_SESSION['id_usuario'])) {
-    header("Location: " . ($_SESSION['user_type'] == 'Organizador' ? 'organizador.php' : 'evento.php'));
-    exit;
-}
-//login
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['username']) && !empty($_POST['senha'])) {
 
-    $username = trim ($_POST['username']);
+//login
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['username'], $_POST['senha'])) {
+
+    $username = $_POST['username'];
     $senha = $_POST['senha'];
 
     // Busca o usuário pelo username
@@ -23,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['username']) && !empty
     if ($usuario) {
         // Verifica se a senha bate com o hash armazenado
         if (password_verify($senha, $usuario['senha'])) {
-            // Sucesso no login, armazena dados na sessão
+            session_start();
             $_SESSION['id_usuario'] = $usuario['id_usuario'];
             $_SESSION['nome'] = $usuario['nome'];
             $_SESSION['username'] = $usuario['username'];

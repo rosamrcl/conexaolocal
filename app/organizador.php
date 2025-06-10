@@ -31,9 +31,8 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
             <a href="evento.php">Eventos</a>
             <a href="organizador.php">Organizador</a>      
         </nav>
-        <div class="icons">            
-            <i class="fas fa-user" id="login-btn"></i> 
-        </div>
+        <h2>Bem-Vindo, <span><?=($_SESSION['nome'])?></span></h2>
+        <a href="/api/logout.php">Sair</a>
         
     </header>
 
