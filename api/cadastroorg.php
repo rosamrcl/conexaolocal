@@ -1,5 +1,4 @@
 <?php
-
 session_start(); 
 require_once('/laragon/www/conexaolocal/api/config.php');
 
@@ -9,22 +8,21 @@ if (!isset($_SESSION['id_usuario'])) {
     exit();
 }
 
+// Verifica se o usuário já é um organizador ANTES de processar o POST
+$stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ?");
+$stmt->execute([$_SESSION['id_usuario']]);
+$organizadorExistente = $stmt->fetch();
+
+// Se já for organizador, redireciona direto para a página de cadastro de eventos
+if ($organizadorExistente) {
+    header('Location: \conexaolocal\app\organizador_evento.php');
+    exit();
+}
+
+// Se não for organizador, processa o formulário de cadastro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar_org'])) {
     // Verifica se todos os campos foram preenchidos
     if (!empty($_POST['nome_org']) && !empty($_POST['cnpj'])) {
-        
-        // Verifica se o usuário já é um organizador
-        $stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ?");
-        $stmt->execute([$_SESSION['id_usuario']]);
-        $organizadorExistente = $stmt->fetch();
-        
-        if ($organizadorExistente) {
-            // Usuário já é organizador, mostra mensagem de erro
-            $_SESSION['erro'] = "Você já está cadastrado como organizador.";
-            header('Location: \conexaolocal\app\organizador_evento.php');
-            exit();
-        }
-
         
         // Insere o novo organizador
         try {
@@ -39,7 +37,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar_org'])) {
             header('Location: \conexaolocal\app\organizador_evento.php');
             exit();   
         } catch (PDOException $e) {
-            // Tratamento de erro do banco de dados
             $_SESSION['erro'] = "Erro ao cadastrar organizador: " . $e->getMessage();
             header('Location: organizador.php');
             exit();
