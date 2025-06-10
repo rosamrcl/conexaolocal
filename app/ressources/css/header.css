@@ -23,6 +23,7 @@
 .header .navbar a:hover{
     color: var(--rosa);
 }
+
 .header a{
     color: var(--letra);
     font-size: 2rem;
@@ -113,6 +114,10 @@
     font-size: 5rem;
     color: var(--branco);
     cursor: pointer;
+}
+.header h2 {
+    font-size: 2rem;
+    color: var(--letra);
 }
 .header h2 span{
     color: var(--rosa);

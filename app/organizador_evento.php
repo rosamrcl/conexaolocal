@@ -31,7 +31,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             <a href="cadastro.php">Cadastro</a>
             <a href="evento.php"">Eventos</a>      
         </nav>
-        <h2>Bem-Vindo, <span><?=($_SESSION['nome'])?></span></h2>
+        <h2>Bem-Vindo, <span><?=($_SESSION['username'])?></span></h2>
         <a href="/api/logout.php">Sair</a>
         
     </header>
@@ -63,7 +63,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         </div>
     </section>
     <section class="organizadores">
-        <form class="box" action="/conexaolocal/api/cadastroevt.php" method="POST" >
+        <form class="box" method="POST" >
             <h3>Cadastre seu evento</h3>
             <input type="text" name="nome_evt" class="box"  placeholder="Nome do evento">
             <input type="text" name="descricao" class="box" placeholder="Descrição">
