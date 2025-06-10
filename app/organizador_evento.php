@@ -1,8 +1,7 @@
 <?php
+session_start();
 require_once('/laragon/www/conexaolocal/api/config.php');
-require_once('/laragon/www/conexaolocal/api/logic.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
-require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
 
 ?>
 <!DOCTYPE html>
@@ -64,7 +63,7 @@ require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
         </div>
     </section>
     <section class="organizadores">
-        <form class="box">
+        <form class="box" action="/conexaolocal/api/cadastroevt.php" method="POST" >
             <h3>Cadastre seu evento</h3>
             <input type="text" name="nome_evt" class="box"  placeholder="Nome do evento">
             <input type="text" name="descricao" class="box" placeholder="Descrição">
@@ -74,12 +73,12 @@ require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
             <input type="text" name="endereco" class="box" placeholder="Endereço">
             <input type="text" name="cidade" class="box" placeholder="Cidade">         
             <input type="number" name="preco" id="" class="box" placeholder="Preço">
-            <select name="" id="" class="box">
+            <select name="status_evento" id="" class="box">
                 <option value="Ativo" class="box">Ativo</option>
                 <option value="Cancelado" class="box">Cancelado</option>
                 <option value="Encerrado" class="box">Encerrado</option>
             </select>
-            <input type="submit" value="Enviar" class="btn">
+            <input type="submit" value="Enviar" class="btn" name="evento_cadastro">
 
         </form>
     </section>

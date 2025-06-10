@@ -1,6 +1,6 @@
 <?php
+session_start(); 
 require_once('/laragon/www/conexaolocal/api/config.php');
-require_once('/laragon/www/conexaolocal/api/logic.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
 
 ?>
@@ -81,7 +81,10 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             </figure>
         </div>
     </section>
-    <h1>Olá</h1>
+    <div class="box">
+        <p></p>
+
+    </div>
 
 
 <footer class="footer">

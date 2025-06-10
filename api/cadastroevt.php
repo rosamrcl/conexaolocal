@@ -1,46 +1,79 @@
 <?php
+
+session_start(); 
 require_once('/laragon/www/conexaolocal/api/config.php');
-require_once('/laragon/www/conexaolocal/api/login.php');
 
-session_start();
+// Verifica se o usuário está logado
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: login.php');
+    exit();
+}
 
-if (isset($_POST['adicionar_org'])) {
-    //Verificar se o id_usuario está na sessão
-    if (!isset($_SESSION['id_usuario'])) {       
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['evento_cadastro'])) {
+
+    // Verifica se todos os campos foram preenchidos
+    if (
+        !empty($_POST['nome_evt']) &&     
+        !empty($_POST['descricao']) &&
+        !empty($_POST['start_date_event']) &&
+        !empty($_POST['end_date']) &&
+        !empty($_POST['local_evento']) &&
+        !empty($_POST['endereco']) &&
+        !empty($_POST['cidade']) &&
+        !empty($_POST['preco']) &&
+        !empty($_POST['status_evento'])
+    ) {
+        
+        try {
+            // Recupera o ID do organizador
+            $stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ?");
+            $stmt->execute([$_SESSION['id_usuario']]);
+            $organizador = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if (!$organizador) {
+                $_SESSION['erro'] = "Usuário não é um organizador válido.";
+                header('Location: /conexaolocal/app/organizador_evento.php');
+                exit();
+            }
+
+            $id_org = $organizador['id_org'];
+            $_SESSION['id_org'] = $id_org;
+
+            // Insere o novo evento
+            $stmt = $pdo->prepare("INSERT INTO evento (
+                nome_evt, descricao, start_date_event, end_date, local_evento,
+                endereco, cidade, preco, status_evento, id_usuario, id_org
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+            $stmt->execute([
+                $_POST['nome_evt'],
+                $_POST['descricao'],
+                $_POST['start_date_event'],
+                $_POST['end_date'],
+                $_POST['local_evento'],
+                $_POST['endereco'],
+                $_POST['cidade'],
+                $_POST['preco'],
+                $_POST['status_evento'],
+                $_SESSION['id_usuario'],
+                $id_org
+            ]);
+
+            $_SESSION['sucesso'] = "Evento cadastrado com sucesso!";
+            header('Location: /conexaolocal/app/evento.php');
+            exit();
+
+        } catch (PDOException $e) {
+            $_SESSION['erro'] = "Erro ao cadastrar evento: " . $e->getMessage();
+            header('Location: /conexaolocal/app/organizador_evento.php');
+            exit();
+        }
+
+    } else {
+        $_SESSION['erro'] = "Por favor, preencha todos os campos obrigatórios.";
+        header('Location: /conexaolocal/app/organizador_evento.php');
         exit();
     }
-
-    $id_usuario = $_SESSION['id_usuario'];
-    $nome_org = $_POST['nome_org'];
-    $cnpj = $_POST['cnpj'];
-
-    $errors = []; 
-    
-    // 1. Verificar se o usuário existe 
-    $stmt_select = $pdo->prepare("SELECT * FROM usuario WHERE id_usuario = :id_usuario");
-    $stmt_select->bindParam(':id_usuario', $id_usuario);
-    $stmt_select->execute();
-
-    if ($stmt_select->rowCount() == 0) {
-        $errors[] = "Usuário não encontrado. Não é possível cadastrar a organização.";
-    }
-
-    if(empty($errors)){
-        $stmt = $pdo->prepare("INSERT INTO organizador (nome_org, cnpj, id_usuario) VALUES (:nome_org, :cnpj, :id_usuario)");
-        $stmt->bindParam(':nome_org', $nome_org);
-        $stmt->bindParam(':cnpj', $cnpj);
-        $stmt->bindParam(':id_usuario', $id_usuario);
-
-        if ($stmt->execute()) {            
-            exit();
-        } else {
-            $errors[] = "Erro ao cadastrar a organização. Por favor, tente novamente.";
-        }
-    }
-    
-    // Se chegou aqui, houve erros
-    foreach ($errors as $error) {
-        echo '<span class="error-msg">' . $error . '</span>';
-    }
 }
+
 ?>
