@@ -2,7 +2,6 @@
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/logic.php');
 
-
 ?>
 
 <!DOCTYPE html>
