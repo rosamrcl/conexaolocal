@@ -28,11 +28,9 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="evento.php">Eventos</a>
-            <a href="organizador.php">Organizador</a>      
-            <a href="organizador_evento.php">Cadastrar Evento</a>      
+            <a href="evento.php">Eventos</a>              
         </nav>
-        <h2>Bem-Vindo, <span><?=($_SESSION['nome'])?></span></h2>
+        <h2>Bem-Vindo, <span><?= htmlspecialchars($_SESSION['username'] ?? '') ?></span></h2>
         <a href="/api/logout.php">Sair</a>
         
     </header>

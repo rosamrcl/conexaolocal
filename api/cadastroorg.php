@@ -15,8 +15,8 @@ $stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ? LIMIT
 $stmt->execute([$_SESSION['id_usuario']]);
 
 if($stmt->fetch()){
-    $errors[] = "Você já é um organizador";
-
+    header('Location: /conexaolocal/app/organizador_evento.php');
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar_org'])) {

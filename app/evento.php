@@ -29,7 +29,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="evento.php"">Eventos</a>      
+            <a href="evento.php">Eventos</a>      
         </nav>
         <h2>Bem-Vindo, <span><?=($_SESSION['nome'])?></span></h2>
         <a href="/api/logout.php">Sair</a>
