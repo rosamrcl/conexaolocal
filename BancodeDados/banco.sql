@@ -86,9 +86,12 @@ CREATE TABLE IF NOT EXISTS `organizador` (
   PRIMARY KEY (`id_org`),
   KEY `id_usuario` (`id_usuario`),
   CONSTRAINT `organizador_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela conexaolocal.organizador: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela conexaolocal.organizador: ~2 rows (aproximadamente)
+INSERT INTO `organizador` (`id_org`, `id_usuario`, `nome_org`, `cnpj`) VALUES
+	(1, 1, 'Lukkin Produções', 5404),
+	(2, 2, 'Cat Produções', 12345678);
 
 -- Copiando estrutura para tabela conexaolocal.usuario
 DROP TABLE IF EXISTS `usuario`;
@@ -102,14 +105,12 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Copiando dados para a tabela conexaolocal.usuario: ~4 rows (aproximadamente)
+-- Copiando dados para a tabela conexaolocal.usuario: ~1 rows (aproximadamente)
 INSERT INTO `usuario` (`id_usuario`, `nome`, `username`, `email`, `user_type`, `senha`) VALUES
-	(1, 'Catarina Silva', 'catsil', 'catsil@email.com', 'Usuário', '$2y$10$0.0syc8SXq0DTDJviGY3nuatu.dnYPG9MoBRigPcIGmIBi6PR13oS'),
-	(2, 'Isaque Newton', 'isaque_n', 'isaque@g.com', 'Organizador', '$2y$10$wCV.H9osDLfz.IqN9A3voekoHEf4boexU9vcVuLqnYffZDSqlPDz6'),
-	(3, 'Márcio Lorenzo', 'marcio_lorenzo', 'marcio-araujo73@gasparalmeida.com', 'Usuário', '$2y$10$AnzLj50lyak1OT43gi3NBeNAScjkU5BHn0EZ/2l8xpM8UEHPwn0S2'),
-	(4, 'Anna Iris', 'anna_iris', 'annna@g.com', 'Organizador', '$2y$10$jsOWM0ksTnuIph9/kvxHre1m5hAh9C9dSnD5gre39G48t2uQfvqfe');
+	(1, 'Luan Aquino', 'lukkin', 'luan@g.com', 'Organizador', '$2y$10$qzlVrMlzoPYC43YBKbSjT.sZ2tsAGYlxgJa/PDaeMgJN90YeJO9w2'),
+	(2, 'calça', 'catsil', 'catsil@email.com', 'Organizador', '$2y$10$3whHYKmcFBAI0ckoaHE4d.RlcNDQRIKXvK47QW1XLgfwWQFLOFUNi');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

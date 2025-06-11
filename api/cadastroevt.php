@@ -1,18 +1,19 @@
 <?php
 session_start(); 
-require_once(__DIR__ . '/../api/config.php');
+require_once('/laragon/www/conexaolocal/api/config.php');
 
 //Verifica se o usuário está logado 
 if (!isset($_SESSION['id_org'])) {
-    header('Location: login.php');
+    header('Location: app\organizador_evento.php');
     exit();
+
 }
 
 $errors =[];
 
 
-// $stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ? LIMIT 1");
-// $stmt->execute([$_SESSION['id_org']]);
+$stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ? LIMIT 1");
+$stmt->execute([$_SESSION['id_org']]);
 
 
 

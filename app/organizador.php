@@ -30,6 +30,7 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
             <a href="cadastro.php">Cadastro</a>
             <a href="evento.php">Eventos</a>
             <a href="organizador.php">Organizador</a>      
+            <a href="organizador_evento.php">Cadastrar Evento</a>      
         </nav>
         <h2>Bem-Vindo, <span><?=($_SESSION['nome'])?></span></h2>
         <a href="/api/logout.php">Sair</a>
@@ -73,7 +74,7 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
             ?>            
 
             <input type="text" class="box" placeholder="Nome da organização" name="nome_org">
-            <input type="number" class="box" placeholder="CNPJ" name="cnpj" max="14">
+            <input type="number" class="box" placeholder="CNPJ" name="cnpj" >
             <input type="submit" value="Enviar" class="btn" name="adicionar_org">
         </form>
     </section>
