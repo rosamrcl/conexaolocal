@@ -8,46 +8,40 @@ if (!isset($_SESSION['id_usuario'])) {
     exit();
 }
 
+
+$errors =[];
+
 // Verifica se o usuário já é um organizador ANTES de processar o POST
-$stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ?");
-$stmt->execute([$_SESSION['id_usuario']]);
-$organizadorExistente = $stmt->fetch();
 
-// Se já for organizador, redireciona direto para a página de cadastro de eventos
-if ($organizadorExistente) {
-    header('Location: \conexaolocal\app\organizador_evento.php');
-    exit();
-}
-
-// Se não for organizador, processa o formulário de cadastro
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adicionar_org'])) {
     // Verifica se todos os campos foram preenchidos
-    if (!empty($_POST['nome_org']) && !empty($_POST['cnpj'])) {
-        
-        // Insere o novo organizador
-        try {
-            $stmt = $pdo->prepare("INSERT INTO organizador (nome_org, cnpj, id_usuario) VALUES (?, ?, ?)");        
-            $stmt->execute([
-                $_POST['nome_org'],
-                $_POST['cnpj'],
-                $_SESSION['id_usuario'] 
-            ]);
-            
-            $_SESSION['sucesso'] = "Cadastro como organizador realizado com sucesso!";
+    if (!empty($_POST['nome_org'])){
+        $errors[] = "Nome da organização é obrigatório";
+    }
+    
+    if (!empty($_POST['cnpj'])){
+        $errors[] = "CNPJ é obrigatório";
+    }
+    
+    $stmt = $pdo->prepare("SELECT id_org FROM organizador WHERE id_usuario = ? LIMIT 1");
+    $stmt->execute([$_SESSION['id_usuario']]);
+
+    if($stmt->fetch()){
+        $errors[]= "Você já é um organizador";
+    }
+    
+    if (empty($errors)){
+        $stmt = $pdo->prepare("INSERT INTO organizador (nome_org, cnpj, id_usuario) VALUES (?, ?, ?)");        
+        $stmt->execute([
+            $_POST['nome_org'],
+            $_POST['cnpj'],
+            $_SESSION['id_usuario']]);            
+
             header('Location: \conexaolocal\app\organizador_evento.php');
             exit();   
-        } catch (PDOException $e) {
-            $_SESSION['erro'] = "Erro ao cadastrar organizador: " . $e->getMessage();
-            header('Location: organizador.php');
-            exit();
-        }
-    } else {
-        $_SESSION['erro'] = "Por favor, preencha todos os campos obrigatórios.";
-        header('Location: organizador.php');
-        exit();
     }
+    
 }
-
 
 ?>
 

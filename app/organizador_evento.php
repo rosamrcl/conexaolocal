@@ -2,6 +2,7 @@
 session_start();
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
+require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
 
 ?>
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             <a href="cadastro.php">Cadastro</a>
             <a href="evento.php"">Eventos</a>      
         </nav>
-        <h2>Bem-Vindo, <span><?=($_SESSION['username'])?></span></h2>
+        <h2>Bem-Vindo, <span><?= htmlspecialchars($_SESSION['username'] ?? '') ?></span></h2>
         <a href="/api/logout.php">Sair</a>
         
     </header>
@@ -63,24 +64,44 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         </div>
     </section>
     <section class="organizadores">
-        <form class="box" method="POST" >
+        <form class="box" method="POST">
             <h3>Cadastre seu evento</h3>
-            <input type="text" name="nome_evt" class="box"  placeholder="Nome do evento">
-            <input type="text" name="descricao" class="box" placeholder="Descrição">
-            <input type="date" name="start_date_event" id="" class="box">
-            <input type="date" name="end_date" id="" class="box">
-            <input type="text" name="local_evento" class="box" placeholder="Local do evento">
-            <input type="text" name="endereco" class="box" placeholder="Endereço">
-            <input type="text" name="cidade" class="box" placeholder="Cidade">         
-            <input type="number" name="preco" id="" class="box" placeholder="Preço">
-            <select name="status_evento" id="" class="box">
-                <option value="Ativo" class="box">Ativo</option>
-                <option value="Cancelado" class="box">Cancelado</option>
-                <option value="Encerrado" class="box">Encerrado</option>
+            
+            <input type="text" name="nome_evt" class="box" placeholder="Nome do evento" 
+                value="<?= htmlspecialchars($dados['nome_evt'] ?? '') ?>" required>
+            
+            <input type="text" name="descricao" class="box" placeholder="Descrição" 
+                value="<?= htmlspecialchars($dados['descricao'] ?? '') ?>" required>
+            
+            <label>Data de Início</label>
+            <input type="date" name="start_date_event" class="box" 
+                value="<?= htmlspecialchars($dados['start_date_event'] ?? '') ?>" required>
+            
+            <label>Data de Término</label>
+            <input type="date" name="end_date" class="box" 
+                value="<?= htmlspecialchars($dados['end_date'] ?? '') ?>" required>
+            
+            <input type="text" name="local_evento" class="box" placeholder="Local do evento" 
+                value="<?= htmlspecialchars($dados['local_evento'] ?? '') ?>" required>
+            
+            <input type="text" name="endereco" class="box" placeholder="Endereço" 
+                value="<?= htmlspecialchars($dados['endereco'] ?? '') ?>" required>
+            
+            <input type="text" name="cidade" class="box" placeholder="Cidade" 
+                value="<?= htmlspecialchars($dados['cidade'] ?? '') ?>" required>
+            
+            <input type="number" name="preco" step="0.01" class="box" placeholder="Preço" 
+                value="<?= htmlspecialchars($dados['preco'] ?? '') ?>" required>
+            
+            <select name="status_evento" class="box" required>
+                <option value="Ativo" <?= ($dados['status_evento'] ?? '') === 'Ativo' ? 'selected' : '' ?>>Ativo</option>
+                <option value="Cancelado" <?= ($dados['status_evento'] ?? '') === 'Cancelado' ? 'selected' : '' ?>>Cancelado</option>
+                <option value="Encerrado" <?= ($dados['status_evento'] ?? '') === 'Encerrado' ? 'selected' : '' ?>>Encerrado</option>
             </select>
+            
             <input type="submit" value="Enviar" class="btn" name="evento_cadastro">
-
         </form>
+    </section>
     </section>
 
 

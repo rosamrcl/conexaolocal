@@ -73,7 +73,7 @@ require_once('/laragon/www/conexaolocal/api/cadastroorg.php');
             ?>            
 
             <input type="text" class="box" placeholder="Nome da organização" name="nome_org">
-            <input type="number" class="box" placeholder="CNPJ" name="cnpj">
+            <input type="number" class="box" placeholder="CNPJ" name="cnpj" max="14">
             <input type="submit" value="Enviar" class="btn" name="adicionar_org">
         </form>
     </section>
