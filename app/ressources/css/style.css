@@ -22,6 +22,9 @@
     outline: none;
     font-family: "Poppins", sans-serif;
 }
+body{
+    overflow-x: hidden;
+}
 html{
     font-size: 62.5%;
     overflow-x: hidden;

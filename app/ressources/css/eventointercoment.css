@@ -1,18 +1,21 @@
 .eventos{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
 }
+
 
 .eventos form{
     background: var(--branco);
     border: var(--border);
-    width: 40rem;
     padding: 2rem;
     box-shadow: var(--box-shadow);
     border-radius: .5rem;
-    margin: 2rem;
+    width: 40rem;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 .eventos form a{
@@ -28,7 +31,6 @@
     padding: 1rem 1.2rem;
     color: var(--letra);
     text-transform: none;
-    flex: 1 1 300px;
 }
 
 .eventos form .btn{

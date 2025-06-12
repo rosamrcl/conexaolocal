@@ -63,6 +63,7 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
         </div>
     </section>
     <section class="eventos">
+        <div class="container"></div>
         <?php if (!empty($mensagem)): ?>
             <p class="mensagem"><?= htmlspecialchars($mensagem) ?></p>
         <?php endif; ?>
