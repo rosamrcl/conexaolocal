@@ -1,6 +1,7 @@
 .eventos{
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -27,17 +28,9 @@
     padding: 1rem 1.2rem;
     color: var(--letra);
     text-transform: none;
+    flex: 1 1 300px;
 }
 
-.eventos form .box button{
-    background: var(--branco);
-    border-radius: 50%;
-    font-size: 1.6rem;
-    padding: 1rem 1.2rem;
-}
-.eventos form .box button i{
-    color: var(--rosa);
-}
 .eventos form .btn{
     text-align: center;
     width: 100%;
@@ -52,8 +45,8 @@
     padding: 1rem 1.2rem;
     color: var(--letra);
 } 
-.eventos form button{
-    height:3rem;
+.eventos form button {
+    height: 3rem;
     width: 3rem;
     margin: 0 .4rem ;
     padding: 0 .5rem;
@@ -61,20 +54,38 @@
     border-radius: 50%;
     box-shadow: var(--box-shadow);
 }
-.eventos form button i{
-    color: var(--rosa);
-    font-size: 1.6rem;
-}
-.eventos form button:hover i{
-    opacity: .6;
-}
-.eventos form  button .seguir i{
-    color: goldenrod;
-    font-size: 1.6rem;
-}
-.eventos form .seguir button:hover i{
-    opacity: .6;
-}
 
-
+.eventos form button.seguir i {
+    color: gold;
+    font-size: 2rem;
+}
+.eventos form button.seguir:hover i {
+    color: red;
+    
+}
+.eventos form button.curtir i {
+    color: red;
+    font-size: 2rem;
+}
+.eventos form button.curtir:hover i {
+    color: gold;
+    
+}
+.eventos form button.botao{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    color: var(--letra);
+    background: var(--verde);
+    font-size: 1.7rem;
+    cursor: pointer;
+    font-weight: 500;
+    width: 100%;
+    height: 4rem;
+}
+.eventos form button.botao:hover{
+    background: var(--rosa);
+    color: var(--branco);
+}
 

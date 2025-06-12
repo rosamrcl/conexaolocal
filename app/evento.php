@@ -77,10 +77,10 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
                         <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
                         <p><strong>Preço:</strong> R$ <?= number_format($evento['preco'], 2, ',', '.') ?></p>
                     </div>
-                    <button  name="curtir" type="submit" <?= isset($curtidas[$evento['id_evt']]) ? 'disabled style="color:red;"' : '' ?>>
+                    <button class="curtir" id="curtir"  name="curtir" type="submit" <?= isset($curtidas[$evento['id_evt']]) ? 'disabled style="color:red;"' : '' ?>>
                         <i class="fa-solid fa-heart"></i>
                     </button>
-                    <button class="seguir" name="seguir" type="submit" <?= isset($curtidas[$evento['id_evt']]) ? 'disabled style="color:red;"' : '' ?>>
+                    <button class="seguir" id="seguir" name="seguir" type="submit" <?= isset($curtidas[$evento['id_evt']]) ? 'disabled style="color:red;"' : '' ?>>
                         <i class="fa-solid fa-bell"></i></i>
                     </button>
                     <input type="hidden" name="id_evt" value="<?= $evento['id_evt'] ?>">
@@ -100,7 +100,7 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
                         <textarea name="comentario" class="box" placeholder="Digite seu comentário"></textarea>
                     </div>              
 
-                    <button type="submit" class="btn">Enviar</button>
+                    <button type="submit" class="botao">Enviar</button>
                 </form>
             <?php endforeach; ?>
         <?php elseif (isset($eventos)): ?>
