@@ -43,9 +43,7 @@ if (isset($_GET['delete'])){
         <a href=" /api/logout.php">Sair</a>
 
     </header>
-    <div class="login-form-container">
-        <i class="fas fa-times" id="form-close"></i>
-    </div>
+
 
     <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">

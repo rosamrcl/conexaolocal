@@ -29,25 +29,7 @@ require_once('/laragon/www/conexaolocal/api/logic.php');
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
         </nav>
-        <div class="icons">
-            <i class="fas fa-user" id="login-btn"></i>
-        </div>
-
     </header>
-    <div class="login-form-container">
-        <i class="fas fa-times" id="form-close"></i>
-
-        <form action="" method="POST">
-            <h3>Login</h3>
-            <input type="text" class="box" name="username" placeholder="Digite seu username">
-            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
-            <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="" id="remenber">
-            <label for="remenber">Lembre-se de mim</label>
-            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
-        </form>
-    </div>
     <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">

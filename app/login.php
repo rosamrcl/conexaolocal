@@ -32,9 +32,6 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>     
         </nav>
-        <div class="icons">            
-            <i class="fas fa-user" id="login-btn"></i>
-        </div>
         
     </header>
 
