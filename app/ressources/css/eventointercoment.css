@@ -44,19 +44,7 @@
     margin: 1.5rem 0;
 } 
 
-.eventos .card{
-    width: 100%;
-    margin: .7rem 0;
-    font-size: 1.6rem;
-    border: var(--border);
-    border-radius: .5rem;
-    padding: 1rem 1.2rem;
-    color: var(--letra);
-    text-transform: none;
-}
-.eventos .card h2{
-    color: var(--rosa);
-}
+
 
 
 

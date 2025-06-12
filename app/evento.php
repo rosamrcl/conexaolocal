@@ -67,15 +67,15 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
         <?php endif; ?>
         <?php if (isset($eventos) && count($eventos) > 0): ?>
             <?php foreach ($eventos as $evento): ?>
-                <div class="card">
-                    <h2><?= htmlspecialchars($evento['nome_evt']) ?></h2>
-                    <h3><?= htmlspecialchars($evento['descricao']) ?></h3>
-                    <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($evento['start_date_event'])) ?></p>
-                    <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
-                    <p><strong>Preço:</strong> R$ <?= number_format($evento['preco'], 2, ',', '.') ?></p>
-                </div>
-
+                
                 <form class="box" method="POST">
+                    <div class="card">
+                        <h2><?= htmlspecialchars($evento['nome_evt']) ?></h2>
+                        <h3><?= htmlspecialchars($evento['descricao']) ?></h3>
+                        <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($evento['start_date_event'])) ?></p>
+                        <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
+                        <p><strong>Preço:</strong> R$ <?= number_format($evento['preco'], 2, ',', '.') ?></p>
+                    </div>
                     <button name="curtir" type="submit"><i class="fa-solid fa-heart"></i></button>
                     <textarea name="comentario" class="box"></textarea>
                     <input type="submit" class="btn" value="Enviar" name="comentario">
