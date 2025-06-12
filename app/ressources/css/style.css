@@ -52,6 +52,22 @@ html::-webkit-scrollbar-thumb{
     background: var(--rosa);
     color: var(--branco);
 }
+.delete-btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    border: var(--border);
+    color: var(--branco);
+    background: var(--delete);
+    font-size: 1.7rem;
+    font-weight: 500;   
+    cursor: pointer;
+
+}
+.delete-btn:hover{
+    opacity: 0.8;
+}
 
 section{
     padding: 5rem 9%;
@@ -132,19 +148,3 @@ section{
     justify-content: center;
 }
 
-.delete-btn{
-    margin-top: 1rem;
-    display: inline-block;
-    padding: .9rem 3rem;
-    border-radius: .5rem;
-    border: var(--border);
-    color: var(--white);
-    font-size: 2rem;
-    font-weight: bold;
-    cursor: pointer;
-    width: 100%;
-    background: var(--delete);
-}
-.delete-btn:hover{
-    opacity: 0.8;
-}
