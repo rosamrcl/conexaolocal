@@ -1,8 +1,22 @@
 <?php
-session_start(); 
+session_start();
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
 
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['id_usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+
+// Supondo que o id_org está na sessão (ajuste conforme sua aplicação)
+$id_org = $_SESSION['id_usuario']; // ou $_SESSION['id_org'] se for diferente
+
+$stmt = $pdo->prepare("SELECT * FROM evento WHERE id_org = :id");
+$stmt->bindParam(':id', $id_org);
+$stmt->execute();
+$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -29,36 +43,16 @@ require_once('/laragon/www/conexaolocal/api/login.php');
         <nav class="navbar">
             <a href="login.php">Home</a>
             <a href="cadastro.php">Cadastro</a>
-            <a href="evento.php">Eventos</a>      
+            <a href="evento.php">Eventos</a>
         </nav>
-        <h2>Bem-Vindo, <span><?=($_SESSION['nome'])?></span></h2>
+        <h2>Bem-Vindo, <span><?= ($_SESSION['nome']) ?></span></h2>
         <a href="/api/logout.php">Sair</a>
 
-        
-    </header>
-    <div class="login-form-container">
-        <i class="fas fa-times" id="form-close"></i>
-        
-        <form action="" method="POST">            
-            <h3>Login</h3>
-            <?php
-                if (isset($error)) {
-                    foreach ($error as $error) { 
-                        echo '<span class="error_msg">' . $errorMessage . '</span>';
-                    }
-                }
-            ?>       
-            <input type="text" class="box" name="username" placeholder="Digite seu username">
-            <input type="password" class="box" name="senha" placeholder="Digite sua senha">
-            <input type="submit" name="login" class="btn" value="Enviar">
-            <input type="checkbox" name="enviar" id="remenber">
-            <label for="remenber">Lembre-se de mim</label>
-            <p>Esqueceu a senha? <a href="#">Clique aqui</a></p>
-            <p>Não tem uma conta? <a href="./cadastro.php">Cadastre agora</a></p>
-        </form>
-    </div>
 
-    <section class="home" id="home">        
+    </header>
+
+
+    <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
             <figure>
@@ -81,15 +75,28 @@ require_once('/laragon/www/conexaolocal/api/login.php');
             </figure>
         </div>
     </section>
-    <div class="box">
-        <p></p>
+    <section class="eventos">
+        <?php foreach ($eventos as $evento): ?>
+            <div class="card">
+                <h2><?= htmlspecialchars($evento['nome_event']) ?></h2>
+                <h3><?= htmlspecialchars($evento['descricao']) ?></h3>
+                <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($evento['start_date_event'])) ?></p>
+                <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
+                <p><strong>Preço:</strong> R$ <?= number_format($evento['price'], 2, ',', '.') ?></p>
+            </div>
+        <?php endforeach; ?>
 
-    </div>
+        <form class="box" method="POST">
+            <button name="curtir" type="submit"><i class="fa-solid fa-heart"></i></button>
+            <textarea name="comentario" class="box"></textarea>
+            <input type="submit" class="btn" value="Enviar" name="comentario">
+        </form>
+    </section>
 
 
-<footer class="footer">
-    <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
-</footer>
+    <footer class="footer">
+        <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
+    </footer>
 
     <script src="./ressources/js/script.js"></script>
 </body>
