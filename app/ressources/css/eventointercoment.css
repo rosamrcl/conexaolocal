@@ -59,12 +59,20 @@
     padding: 0 .5rem;
     line-height: 3rem;
     border-radius: 50%;
+    box-shadow: var(--box-shadow);
 }
 .eventos form button i{
     color: var(--rosa);
     font-size: 1.6rem;
 }
 .eventos form button:hover i{
+    opacity: .6;
+}
+.eventos form  button .seguir i{
+    color: goldenrod;
+    font-size: 1.6rem;
+}
+.eventos form .seguir button:hover i{
     opacity: .6;
 }
 

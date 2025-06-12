@@ -3,6 +3,7 @@ require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
 require_once('/laragon/www/conexaolocal/api/evento.php');
 
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -67,7 +68,7 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
         <?php endif; ?>
         <?php if (isset($eventos) && count($eventos) > 0): ?>
             <?php foreach ($eventos as $evento): ?>
-                
+
                 <form class="box" method="POST">
                     <div class="card">
                         <h2><?= htmlspecialchars($evento['nome_evt']) ?></h2>
@@ -76,9 +77,30 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
                         <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
                         <p><strong>Preço:</strong> R$ <?= number_format($evento['preco'], 2, ',', '.') ?></p>
                     </div>
-                    <button name="curtir" type="submit"><i class="fa-solid fa-heart"></i></button>
-                    <textarea name="comentario" class="box"></textarea>
-                    <input type="submit" class="btn" value="Enviar" name="comentario">
+                    <button  name="curtir" type="submit" <?= isset($curtidas[$evento['id_evt']]) ? 'disabled style="color:red;"' : '' ?>>
+                        <i class="fa-solid fa-heart"></i>
+                    </button>
+                    <button class="seguir" name="seguir" type="submit" <?= isset($curtidas[$evento['id_evt']]) ? 'disabled style="color:red;"' : '' ?>>
+                        <i class="fa-solid fa-bell"></i></i>
+                    </button>
+                    <input type="hidden" name="id_evt" value="<?= $evento['id_evt'] ?>">
+                    <divv class="comentario">
+                        <?php if (!empty($comentariosPorEvento[$evento['id_evt']])): ?>
+                            <div class="comentarios">
+                                <h4>Comentários:</h4>
+                                <?php foreach ($comentariosPorEvento[$evento['id_evt']] as $comentario): ?>
+                                    <div class="comentario">
+                                        <strong><?= htmlspecialchars($comentario['nome']) ?></strong>
+                                        <p><?= htmlspecialchars($comentario['comentario']) ?></p>
+                                        <small><?= date('d/m/Y H:i', strtotime($comentario['created_at'])) ?></small>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                        <textarea name="comentario" class="box" placeholder="Digite seu comentário"></textarea>
+                    </div>              
+
+                    <button type="submit" class="btn">Enviar</button>
                 </form>
             <?php endforeach; ?>
         <?php elseif (isset($eventos)): ?>

@@ -44,7 +44,7 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS interacao (
     id_interacao INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT NOT NULL,
     id_evt INT NOT NULL,
-    tipo ENUM('like', 'subscribe', 'favorite') NOT NULL,
+    tipo ENUM('Curtir', 'Seguir') NOT NULL,
     UNIQUE ( id_usuario, id_evt, tipo),
     FOREIGN KEY ( id_usuario) REFERENCES usuario( id_usuario) ON DELETE CASCADE,
     FOREIGN KEY (id_evt) REFERENCES evento(id_evt) ON DELETE CASCADE
