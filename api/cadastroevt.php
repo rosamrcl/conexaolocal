@@ -69,8 +69,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['evento_cadastro'])) {
             ]);
             
             if($success) {
-                header('Location: /conexaolocal/app/evento.php');
-                exit();
+                $stmt = $pdo->prepare("SELECT * FROM evento WHERE id_org = ? ORDER BY start_date_event ASC");
+                $stmt->execute([$_SESSION['id_org']]);
+                $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
             } else {
                 $errors[] = "Erro ao cadastrar evento";
             }

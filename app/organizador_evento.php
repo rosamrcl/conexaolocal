@@ -1,8 +1,15 @@
 <?php
-session_start();
+// session_start();
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
 require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
+
+if (isset($_GET['delete'])){
+    $stmt=$pdo->prepare("DELETE FROM evento WHERE id=?");
+    $stmt->execute([$_GET['delete']]);
+    header("Location: organizador_evento.php");
+    exit();    
+}
 
 ?>
 <!DOCTYPE html>
@@ -33,14 +40,14 @@ require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
             <a href="evento.php"">Eventos</a>      
         </nav>
         <h2>Bem-Vindo, <span><?= htmlspecialchars($_SESSION['username'] ?? '') ?></span></h2>
-        <a href="/api/logout.php">Sair</a>
-        
+        <a href=" /api/logout.php">Sair</a>
+
     </header>
     <div class="login-form-container">
         <i class="fas fa-times" id="form-close"></i>
     </div>
 
-    <section class="home" id="home">        
+    <section class="home" id="home">
         <img src="./ressources/img/logo.png" alt="">
         <div class="imagens">
             <figure>
@@ -66,45 +73,65 @@ require_once('/laragon/www/conexaolocal/api/cadastroevt.php');
     <section class="organizadores">
         <form class="box" method="POST">
             <h3>Cadastre seu evento</h3>
-            
+
             <input type="text" name="nome_evt" class="box" placeholder="Nome do evento" required>
 
-            <textarea name="descricao" class="box" placeholder="Descrição" required></textarea>            
-            
-            
+            <textarea name="descricao" class="box" placeholder="Descrição" required></textarea>
+
+
             <label>Data de Início</label>
-            <input type="date" name="start_date_event" class="box" 
-            required>
-            
+            <input type="date" name="start_date_event" class="box"
+                required>
+
             <label>Data de Término</label>
-            <input type="date" name="end_date" class="box" 
-            required>
-            
-            <input type="text" name="local_evento" class="box" placeholder="Local do evento" 
-            required>
-            
-            <input type="text" name="endereco" class="box" placeholder="Endereço" 
-            required>
-            
+            <input type="date" name="end_date" class="box"
+                required>
+
+            <input type="text" name="local_evento" class="box" placeholder="Local do evento"
+                required>
+
+            <input type="text" name="endereco" class="box" placeholder="Endereço"
+                required>
+
             <input type="text" name="cidade" class="box" placeholder="Cidade" required>
-            
+
             <input type="number" name="preco" step="0.01" class="box" placeholder="Preço" required>
-            
+
             <select name="status_evento" class="box" required>
                 <option value="Ativo">Ativo</option>
                 <option value="Cancelado">Cancelado</option>
                 <option value="Encerrado">Encerrado</option>
             </select>
-            
+
             <input type="submit" value="Enviar" class="btn" name="evento_cadastro">
         </form>
     </section>
+    <section class="eventos">
+        <?php if (!empty($mensagem)): ?>
+            <p class="mensagem"><?= htmlspecialchars($mensagem) ?></p>
+        <?php endif; ?>
+        <?php if (isset($eventos) && count($eventos) > 0): ?>
+            <?php foreach ($eventos as $evento): ?>
+                <div class="card">
+                    <h2><?= htmlspecialchars($evento['nome_evt']) ?></h2>
+                    <h3><?= htmlspecialchars($evento['descricao']) ?></h3>
+                    <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($evento['start_date_event'])) ?></p>
+                    <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> </p>
+                    <p><strong>Endereço:</strong>  <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
+                    <p><strong>Preço:</strong> R$ <?= number_format($evento['preco'], 2, ',', '.') ?></p>
+                    <a href="" class="btn">Editar</a> <a class="delete-btn" href="?delete=<?= $product['id']; ?>" onclick="return confirm ('Tem certeza que deseja excluir?')">Excluir</a>
+                </div>
+                
+            <?php endforeach; ?>
+            <?php elseif (isset($eventos)): ?>
+            <p style="text-align: center;">Você ainda não criou nenhum evento.</p>
+            <?php endif; ?>
     </section>
 
 
-<footer class="footer">
-    <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
-</footer>
+    <footer class="footer">
+        <a target="_blank" href="https://github.com/RosaCL"><img src="./ressources/img/costureza.png" alt=""></a>
+    </footer>
 
     <script src="./ressources/js/script.js"></script>
 </body>

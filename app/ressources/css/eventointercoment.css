@@ -54,6 +54,9 @@
     color: var(--letra);
     text-transform: none;
 }
+.eventos .card h2{
+    color: var(--rosa);
+}
 
 
 

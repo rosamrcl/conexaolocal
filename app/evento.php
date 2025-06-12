@@ -1,22 +1,8 @@
 <?php
-session_start();
 require_once('/laragon/www/conexaolocal/api/config.php');
 require_once('/laragon/www/conexaolocal/api/login.php');
+require_once('/laragon/www/conexaolocal/api/evento.php');
 
-
-// Verifica se o usuário está logado
-if (!isset($_SESSION['id_usuario'])) {
-    header('Location: login.php');
-    exit();
-}
-
-// Supondo que o id_org está na sessão (ajuste conforme sua aplicação)
-$id_org = $_SESSION['id_usuario']; // ou $_SESSION['id_org'] se for diferente
-
-$stmt = $pdo->prepare("SELECT * FROM evento WHERE id_org = :id");
-$stmt->bindParam(':id', $id_org);
-$stmt->execute();
-$eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -76,21 +62,28 @@ $eventos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </section>
     <section class="eventos">
-        <?php foreach ($eventos as $evento): ?>
-            <div class="card">
-                <h2><?= htmlspecialchars($evento['nome_event']) ?></h2>
-                <h3><?= htmlspecialchars($evento['descricao']) ?></h3>
-                <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($evento['start_date_event'])) ?></p>
-                <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
-                <p><strong>Preço:</strong> R$ <?= number_format($evento['price'], 2, ',', '.') ?></p>
-            </div>
-        <?php endforeach; ?>
+        <?php if (!empty($mensagem)): ?>
+            <p class="mensagem"><?= htmlspecialchars($mensagem) ?></p>
+        <?php endif; ?>
+        <?php if (isset($eventos) && count($eventos) > 0): ?>
+            <?php foreach ($eventos as $evento): ?>
+                <div class="card">
+                    <h2><?= htmlspecialchars($evento['nome_evt']) ?></h2>
+                    <h3><?= htmlspecialchars($evento['descricao']) ?></h3>
+                    <p><strong>Data:</strong> <?= date('d/m/Y H:i', strtotime($evento['start_date_event'])) ?></p>
+                    <p><strong>Local:</strong> <?= htmlspecialchars($evento['local_evento']) ?> <?= htmlspecialchars($evento['endereco']) ?> (<?= htmlspecialchars($evento['cidade']) ?>)</p>
+                    <p><strong>Preço:</strong> R$ <?= number_format($evento['preco'], 2, ',', '.') ?></p>
+                </div>
 
-        <form class="box" method="POST">
-            <button name="curtir" type="submit"><i class="fa-solid fa-heart"></i></button>
-            <textarea name="comentario" class="box"></textarea>
-            <input type="submit" class="btn" value="Enviar" name="comentario">
-        </form>
+                <form class="box" method="POST">
+                    <button name="curtir" type="submit"><i class="fa-solid fa-heart"></i></button>
+                    <textarea name="comentario" class="box"></textarea>
+                    <input type="submit" class="btn" value="Enviar" name="comentario">
+                </form>
+            <?php endforeach; ?>
+        <?php elseif (isset($eventos)): ?>
+            <p style="text-align: center;">Você ainda não criou nenhum evento.</p>
+        <?php endif; ?>
     </section>
 
 

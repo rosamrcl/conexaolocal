@@ -9,6 +9,7 @@
     --border: .1rem solid rgba(0,0,0,.1);
     --border-hover: .1rem solid #444;
     --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+    --delete:#d11212;
 }
 *{
     margin: 0;
@@ -129,4 +130,21 @@ section{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.delete-btn{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: .9rem 3rem;
+    border-radius: .5rem;
+    border: var(--border);
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    background: var(--delete);
+}
+.delete-btn:hover{
+    opacity: 0.8;
 }
