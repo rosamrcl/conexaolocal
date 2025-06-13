@@ -60,17 +60,21 @@
 .eventos form button.seguir i {
     color: gold;
     font-size: 2rem;
+    transition: .3s;
+    opacity: .8;
 }
 .eventos form button.seguir:hover i {
-    color: red;
+    color: gold;
     
 }
 .eventos form button.curtir i {
     color: red;
     font-size: 2rem;
+    transition: .3s;
+    opacity: .8;
 }
 .eventos form button.curtir:hover i {
-    color: gold;
+    color: red;
     
 }
 .eventos form button.botao{
@@ -90,4 +94,5 @@
     background: var(--rosa);
     color: var(--branco);
 }
+
 
