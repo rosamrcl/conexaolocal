@@ -33,7 +33,7 @@ require_once('/laragon/www/conexaolocal/api/evento.php');
             <a href="evento.php">Eventos</a>
         </nav>
         <h2>Bem-Vindo, <span><?= ($_SESSION['nome']) ?></span></h2>
-        <a href="/api/logout.php">Sair</a>
+        <a href="evento.php?logout=<?=$id_usuario?>">Sair</a>
 
 
     </header>

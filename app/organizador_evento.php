@@ -40,7 +40,7 @@ if (isset($_GET['delete'])){
             <a href="evento.php"">Eventos</a>      
         </nav>
         <h2>Bem-Vindo, <span><?= htmlspecialchars($_SESSION['username'] ?? '') ?></span></h2>
-        <a href=" /api/logout.php">Sair</a>
+        <a href="organizador_evento.php?logout=<?=$id_usuario?>">Sair</a>
 
     </header>
 
