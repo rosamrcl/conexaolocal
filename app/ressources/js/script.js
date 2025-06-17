@@ -1,27 +1,17 @@
-let formBtn = document.querySelector('#login-btn');
-let loginForm = document.querySelector('.login-form-container');
-let formClose = document.querySelector('#form-close');
-let menu = document.querySelector('#menu-bar');
-let navbar = document.querySelector('.navbar');
+document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('#menu-bar');
+    const navbar = document.querySelector('.navbar');
 
-window.onscroll = ()=>{
-    menu.classList.remove('fa-times');
-    navbar.classList.remove('active');
-    loginForm.classList.remove('active');
-}
+    menuBtn.addEventListener('click', function() {
+        menuBtn.classList.toggle('fa-times'); // Alterna o ícone (☰ → ✕)
+        navbar.classList.toggle('active');     // Mostra/esconde o menu
+    });
 
-menu.addEventListener('click',()=>{
-    menu.classList.toggle('fa-times');
-    navbar.classList.toggle('active');
-});
-
-
-formBtn.addEventListener('click',()=>{
-    loginForm.classList.add('active');
-});
-
-formClose.addEventListener('click',()=>{
-    loginForm.classList.remove('active');
+    // Fecha o menu ao rolar a página
+    window.onscroll = () => {
+        menuBtn.classList.remove('fa-times');
+        navbar.classList.remove('active');
+    };
 });
 
 
