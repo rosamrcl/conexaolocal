@@ -3,6 +3,7 @@ Conexão Local é uma aplicação web desenvolvida em PHP, com foco na gestão c
 
 
 https://github.com/user-attachments/assets/f33dba51-bb91-4401-8e73-a0883bf556d6
+
 🔧 Funcionalidades Principais
 
 
