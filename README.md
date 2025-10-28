@@ -1,7 +1,12 @@
 Conexão Local
 Conexão Local é uma aplicação web desenvolvida em PHP, com foco na gestão colaborativa de eventos locais e seus organizadores. O sistema permite o cadastro e login de usuários, além do gerenciamento de eventos e seus respectivos organizadores.
 
+
+https://github.com/user-attachments/assets/f33dba51-bb91-4401-8e73-a0883bf556d6
 🔧 Funcionalidades Principais
+
+
+
 Cadastro e autenticação de usuários
 
 Cadastro de eventos
